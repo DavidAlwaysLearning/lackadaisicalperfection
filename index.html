@@ -78,17 +78,28 @@
     list-style: none;
     padding: 0;
     margin: 0 auto;
-    max-width: 28rem;
+    max-width: 38rem;
     color: var(--mute);
     font-size: 0.92rem;
   }
   .tracks li {
     display: flex;
     gap: 16px;
-    padding: 6px 0;
+    padding: 10px 0;
     border-bottom: 1px solid rgba(224,178,74,0.12);
+    align-items: flex-start;
   }
-  .tracks .n { opacity: 0.55; min-width: 1.5em; }
+  .tracks .n { opacity: 0.55; min-width: 1.5em; padding-top: 0.15em; }
+  .tracks .t { flex: 1; }
+  .tracks .line {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.08rem;
+    color: var(--ink);
+    margin: 8px 0 4px;
+    line-height: 1.5;
+  }
   .label {
     text-align: center;
     letter-spacing: 0.2em;
@@ -117,7 +128,7 @@
   <h1>Lackadaisical Perfection</h1>
   <p class="year">coming soon · solo piano</p>
 
-  <p class="album-note">Ten unpublished pieces. Anxious tranquility, a voyage, a tapestry of whispers. The title track sits inside the set, not out in front.</p>
+  <p class="album-note">Ten unpublished pieces. Anxious tranquility, a voyage, a tapestry of whispers. The titles hold two feelings at once. The title track sits inside the set, not out in front.</p>
   <p class="album-note">Nothing to stream yet. The room is open so you can see what’s coming.</p>
 
   <hr class="rule">
@@ -132,16 +143,16 @@
 
   <p class="label">The pieces</p>
   <ol class="tracks">
-    <li><span class="n">1</span><span>Anxious Tranquility</span></li>
-    <li><span class="n">2</span><span>Epic Voyage</span></li>
-    <li><span class="n">3</span><span>Intentionally Forlorn</span></li>
-    <li><span class="n">4</span><span>Mellowitude in Three</span></li>
-    <li><span class="n">5</span><span>Fugacious Eternity</span></li>
-    <li><span class="n">6</span><span>Drops of Hesitation</span></li>
-    <li><span class="n">7</span><span>Absurd Expectation</span></li>
-    <li><span class="n">8</span><span>Lackadaisical Perfection</span></li>
-    <li><span class="n">9</span><span>Fortuitous Discovery</span></li>
-    <li><span class="n">10</span><span>Tapestry of Whispers</span></li>
+    <li><span class="n">1</span><span class="t">Anxious Tranquility<span class="line">The title says it all. Driven and steady. Close your eyes and this piece will transport you; twice, from a slow E minor dream into a D minor scape. The piano starts at 84 bpm, lifts to 97, and then a real ritard into the last chord. Continuous arpeggios, restless, even. Tranquility perhaps in the last seconds.</span></span></li>
+    <li><span class="n">2</span><span class="t">Epic Voyage<span class="line">The voyage is epic, not tranquil, maybe a bit anxious, as all adventures are.</span></span></li>
+    <li><span class="n">3</span><span class="t">Intentionally Forlorn</span></li>
+    <li><span class="n">4</span><span class="t">Mellowitude in Three</span></li>
+    <li><span class="n">5</span><span class="t">Fugacious Eternity</span></li>
+    <li><span class="n">6</span><span class="t">Drops of Hesitation</span></li>
+    <li><span class="n">7</span><span class="t">Absurd Expectation</span></li>
+    <li><span class="n">8</span><span class="t">Lackadaisical Perfection</span></li>
+    <li><span class="n">9</span><span class="t">Fortuitous Discovery</span></li>
+    <li><span class="n">10</span><span class="t">Tapestry of Whispers</span></li>
   </ol>
 
   <hr class="rule">
