@@ -148,6 +148,37 @@
     font-size: 0.85rem;
     color: var(--mute);
   }
+
+  .lookout {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 1.2em 0 0.6em;
+  }
+  .release-calendar {
+    list-style: none;
+    padding: 0;
+    margin: 0.4em 0 0;
+    max-width: 28rem;
+    font-size: 0.95rem;
+    color: var(--mute);
+  }
+  .release-calendar li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.35em 0;
+    border-bottom: 1px solid rgba(224,178,74,0.12);
+  }
+  .release-calendar .when {
+    white-space: nowrap;
+    color: var(--glow);
+    letter-spacing: 0.02em;
+  }
+  .release-calendar .what {
+    color: var(--ink);
+  }
+
 </style>
 </head>
 <body>
@@ -174,6 +205,12 @@
     <p>I’m David Rivera. Florida neoclassical composer. Seven piano solo and ambient albums that fuse minimalism and electronica. The music is piano at heart. Subtle melodies for overlooked moments. A place to slow down and take the time to listen.</p>
     <p>Lackadaisical Perfection is my upcoming album. Here’s a short sample from the first single, <em>Tapestry of Whispers</em>.</p>
     <p class="lookout">Be on the lookout.</p>
+    <ul class="release-calendar">
+      <li><span class="what">Tapestry of Whispers</span><span class="when">October 16, 2026</span></li>
+      <li><span class="what">Luminescent Dreams</span><span class="when">November 6, 2026</span></li>
+      <li><span class="what">Lackadaisical Perfection</span><span class="when">November 27, 2026</span></li>
+      <li><span class="what">Full album</span><span class="when">December 18, 2026</span></li>
+    </ul>
 </div>
 
   <hr class="rule">
