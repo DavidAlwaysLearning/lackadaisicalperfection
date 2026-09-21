@@ -125,6 +125,29 @@
   .catalog li { padding: 5px 0; }
   .catalog a { color: var(--glow); text-decoration: none; }
   .catalog a:hover { text-decoration: underline; }
+
+  .listen {
+    max-width: 420px;
+    margin: 0 auto 36px;
+    text-align: center;
+  }
+  .listen-label {
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--mute);
+    margin: 0 0 10px;
+  }
+  .listen audio {
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+  }
+  .listen-note {
+    margin: 8px 0 0;
+    font-size: 0.85rem;
+    color: var(--mute);
+  }
 </style>
 </head>
 <body>
@@ -134,12 +157,22 @@
   <h1>Lackadaisical Perfection</h1>
   <p class="year">coming soon · solo piano</p>
 
+  <div class="listen">
+    <p class="listen-label">Sample · Tapestry of Whispers</p>
+    <audio controls preload="metadata" playsinline>
+      <source src="assets/tapestry-of-whispers-sample.mp3" type="audio/mpeg">
+      <source src="assets/tapestry-of-whispers-sample.m4a" type="audio/mp4">
+    </audio>
+    <p class="listen-note">About 55 seconds · full single out October 16, 2026</p>
+  </div>
+
+
   <p class="album-note">Eleven unpublished pieces. Anxious tranquility, a voyage, a tapestry of whispers, luminescent dreams.</p>
   <hr class="rule">
 
   <div class="from-david">
     <p>I’m David Rivera. Florida neoclassical composer. Seven piano solo and ambient albums that fuse minimalism and electronica. The music is piano at heart. Subtle melodies for overlooked moments. A place to slow down and take the time to listen.</p>
-    <p>Lackadaisical Perfection is my upcoming album. I’m finishing the sound files now.</p>
+    <p>Lackadaisical Perfection is my upcoming album. Here’s a short sample from the first single, <em>Tapestry of Whispers</em>.</p>
     <p class="lookout">Be on the lookout.</p>
 </div>
 
@@ -156,8 +189,8 @@
     <li><span class="n">7</span><span class="t">Absurd Expectation<span class="line">This beautiful and simple piano melody is small and perfect. It is an absurd expectation. F# minor at 145. (1:59)</span></span></li>
     <li><span class="n">8</span><span class="t">Lackadaisical Perfection<span class="line">A peaceful, easy feeling — when a melody is allowed to just be. F major at 90. (2:44)</span></span></li>
     <li><span class="n">9</span><span class="t">Fortuitous Discovery<span class="line">A piano song is found by a quiet stroke of fortune. And so, all harmonizes. (3:39)</span></span></li>
-    <li><span class="n">10</span><span class="t">Tapestry of Whispers<span class="line">Delicate notes are whispers that form our thoughts. Music weaves who we become. E minor at 115. (2:26)</span></span></li>
-    <li><span class="n">11</span><span class="t">Luminescent Dreams<span class="line">Organic instruments with synthesizer textures, unfolding like a lucid dream through melancholy, a little hope, and introspection. A minor at 80. (4:36)</span></span></li>
+    <li><span class="n">10</span><span class="t">Tapestry of Whispers<span class="line">Delicate notes are whispers that form our thoughts. Music weaves who we become.</span></span></li>
+    <li><span class="n">11</span><span class="t">Luminescent Dreams<span class="line">Organic instruments with synthesizer textures, unfolding like a lucid dream through melancholy, a little hope, and introspection.</span></span></li>
   </ol>
 
   <hr class="rule">
