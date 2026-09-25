@@ -1,42 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Subscribe to Melodic Subtlety</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>
-  (function () {
-    // Modern Mailchimp hosted forms ignore EMAIL=; legacy_form=1 serves HTML
-    // that prefills MERGE0 from the EMAIL query param.
-    var base = "https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&id=98dfcedfd9&legacy_form=1";
-    var params = new URLSearchParams(window.location.search);
-    var email = params.get("EMAIL") || params.get("email") || "";
-    var dest = email ? base + "&EMAIL=" + encodeURIComponent(email) : base;
-    var link = document.createElement("link");
-    link.rel = "canonical";
-    link.href = dest;
-    document.head.appendChild(link);
-    var meta = document.createElement("meta");
-    meta.httpEquiv = "refresh";
-    meta.content = "0;url=" + dest;
-    document.head.appendChild(meta);
-    window.location.replace(dest);
-  })();
-  </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Subscribe to Melodic Subtlety</title>
+<meta name="description" content="Occasional notes when David Rivera has quiet new piano ready.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1c1410;
+    --ink: #f4ead6;
+    --mute: #c4b089;
+    --glow: #e0b24a;
+    --line: rgba(224,178,74,0.28);
+    --field: rgba(244,234,214,0.06);
+    --field-border: rgba(224,178,74,0.35);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(ellipse at 50% 0%, #5a3a28 0%, #1c1410 55%, #0e0a08 100%);
+    color: var(--ink);
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    min-height: 100vh;
+  }
+  main {
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 56px 24px 80px;
+  }
+  .eyebrow {
+    text-align: center;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--glow);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: clamp(1.75rem, 5vw, 2.15rem);
+    text-align: center;
+    margin: 0 0 12px;
+    letter-spacing: 0.01em;
+  }
+  .lede {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.15rem;
+    text-align: center;
+    color: var(--mute);
+    margin: 0 0 28px;
+  }
+  .rule {
+    border: 0;
+    border-top: 1px solid var(--line);
+    width: 64px;
+    margin: 0 auto 28px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  label {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mute);
+    margin-bottom: 6px;
+  }
+  input[type="email"],
+  input[type="text"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--field-border);
+    border-radius: 4px;
+    background: var(--field);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    outline: none;
+  }
+  input[type="email"]:focus,
+  input[type="text"]:focus {
+    border-color: var(--glow);
+    box-shadow: 0 0 0 2px rgba(224,178,74,0.18);
+  }
+  input::placeholder { color: rgba(196,176,137,0.55); }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 420px) {
+    .row { grid-template-columns: 1fr; }
+  }
+  .hp {
+    position: absolute;
+    left: -5000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  button[type="submit"] {
+    margin-top: 8px;
+    padding: 13px 18px;
+    border: 1px solid var(--glow);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--glow);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  button[type="submit"]:hover {
+    background: var(--glow);
+    color: var(--navy);
+  }
+  .fine {
+    margin-top: 22px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--mute);
+  }
+  .fine a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
 </head>
 <body>
-  <p>Opening Melodic Subtlety Fans…</p>
-  <p><a id="fallback" href="https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&amp;id=98dfcedfd9&amp;legacy_form=1">Subscribe to Melodic Subtlety</a></p>
-  <script>
-  (function () {
-    var params = new URLSearchParams(window.location.search);
-    var email = params.get("EMAIL") || params.get("email") || "";
-    if (!email) return;
-    var a = document.getElementById("fallback");
-    if (a) {
-      a.href = "https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&id=98dfcedfd9&legacy_form=1&EMAIL=" + encodeURIComponent(email);
+<main>
+  <p class="eyebrow">Melodic Subtlety</p>
+  <h1>Subscribe</h1>
+  <p class="lede">Occasional notes when quiet new piano is ready. No spam, no hustle.</p>
+  <hr class="rule">
+
+  <form action="https://aol.us4.list-manage.com/subscribe/post" method="post" accept-charset="UTF-8" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
+    <input type="hidden" name="u" value="10ab8b56fb5ba972638358281">
+    <input type="hidden" name="id" value="98dfcedfd9">
+
+    <div>
+      <label for="EMAIL">Email</label>
+      <input type="email" name="EMAIL" id="EMAIL" required autocomplete="email" placeholder="you@example.com">
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="FNAME">First name <span style="text-transform:none;letter-spacing:0;opacity:.7">(optional)</span></label>
+        <input type="text" name="FNAME" id="FNAME" autocomplete="given-name">
+      </div>
+      <div>
+        <label for="LNAME">Last name <span style="text-transform:none;letter-spacing:0;opacity:.7">(optional)</span></label>
+        <input type="text" name="LNAME" id="LNAME" autocomplete="family-name">
+      </div>
+    </div>
+
+    <!-- Honeypot — leave empty -->
+    <div class="hp" aria-hidden="true">
+      <label for="b_field">Don’t fill</label>
+      <input type="text" name="b_10ab8b56fb5ba972638358281_98dfcedfd9" id="b_field" tabindex="-1" value="">
+    </div>
+
+    <button type="submit" name="subscribe" id="mc-embedded-subscribe">Subscribe</button>
+  </form>
+
+  <p class="fine"><a href="https://lackadaisicalperfection.com/">Back to Lackadaisical Perfection</a></p>
+</main>
+<script>
+(function () {
+  function decodeEmail(raw) {
+    if (!raw) return "";
+    var e = raw.trim();
+    // Undo one extra encode layer if Gmail/redirect left %40 literal
+    if (e.indexOf("%") !== -1) {
+      try { e = decodeURIComponent(e); } catch (err) {}
     }
-  })();
-  </script>
+    return e;
+  }
+  var params = new URLSearchParams(window.location.search);
+  var email = decodeEmail(params.get("EMAIL") || params.get("email") || "");
+  var field = document.getElementById("EMAIL");
+  if (field && email) {
+    field.value = email;
+  }
+})();
+</script>
 </body>
 </html>
