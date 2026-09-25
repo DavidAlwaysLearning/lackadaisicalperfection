@@ -128,6 +128,19 @@
     background: var(--glow);
     color: var(--navy);
   }
+  button[type="submit"]:disabled,
+  button[type="submit"]:disabled:hover {
+    background: transparent;
+    color: var(--glow);
+    opacity: 0.55;
+    cursor: progress;
+  }
+  .form-error {
+    margin: 2px 0 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--mute);
+  }
   .fine {
     margin-top: 22px;
     text-align: center;
@@ -148,7 +161,7 @@
   <p class="lede">Occasional notes when quiet new piano is ready. No spam, no hustle.</p>
   <hr class="rule">
 
-  <form action="https://aol.us4.list-manage.com/subscribe/post" method="post" accept-charset="UTF-8" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
+  <form action="/subscribe/" method="post" accept-charset="UTF-8" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
     <input type="hidden" name="u" value="10ab8b56fb5ba972638358281">
     <input type="hidden" name="id" value="98dfcedfd9">
 
@@ -175,6 +188,7 @@
     </div>
 
     <button type="submit" name="subscribe" id="mc-embedded-subscribe">Subscribe</button>
+    <p id="mc-error" class="form-error" role="alert" hidden></p>
   </form>
 
   <p class="fine"><a href="https://lackadaisicalperfection.com/">Back to Lackadaisical Perfection</a></p>
@@ -196,6 +210,95 @@
   if (field && email) {
     field.value = email;
   }
+
+  var form = document.getElementById("mc-embedded-subscribe-form");
+  var errorEl = document.getElementById("mc-error");
+  var button = document.getElementById("mc-embedded-subscribe");
+  if (!form) return;
+
+  // /subscribe/post-json 404s for this audience. The same host's /subscribe/post
+  // returns JSONP when c= is set, so the signup can stay on our domain.
+  var endpoint = "https://aol.us4.list-manage.com/subscribe/post";
+  var pending = false;
+
+  function quietError(msg) {
+    var text = String(msg || "")
+      .replace(/<[^>]*>/g, " ")
+      .replace(/&amp;/g, "&")
+      .replace(/&#0?39;|&apos;/g, "'")
+      .replace(/&quot;/g, "\"")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/\s+/g, " ")
+      .trim()
+      .replace(/^\d+\s*-\s*/, "");
+    if (/already subscribed/i.test(text)) return "You’re already on the list.";
+    if (/single @|valid email|enter a value|looks fake|invalid|complete address/i.test(text)) {
+      return "Please check that email and try again.";
+    }
+    if (!text || /list-manage|https?:/i.test(text) || text.length > 140) {
+      return "We couldn’t add that email. Please try again.";
+    }
+    return text;
+  }
+
+  function showError(msg) {
+    if (!errorEl) return;
+    errorEl.textContent = msg;
+    errorEl.hidden = false;
+  }
+
+  function clearError() {
+    if (!errorEl) return;
+    errorEl.textContent = "";
+    errorEl.hidden = true;
+  }
+
+  if (field) field.addEventListener("input", clearError);
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    if (pending) return;
+    pending = true;
+    clearError();
+    if (button) button.disabled = true;
+
+    var cb = "mcCb" + Date.now();
+    var params;
+    try {
+      params = new URLSearchParams(new FormData(form, event.submitter));
+    } catch (err) {
+      params = new URLSearchParams(new FormData(form));
+    }
+    if (button && button.name && !params.has(button.name)) {
+      params.append(button.name, "Subscribe");
+    }
+    params.set("c", cb);
+
+    var script = document.createElement("script");
+    var settled = false;
+    var timer = setTimeout(function () { finish(null); }, 12000);
+
+    function finish(data) {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      if (script.parentNode) script.parentNode.removeChild(script);
+      try { delete window[cb]; } catch (err) { window[cb] = undefined; }
+      if (data && data.result === "success") {
+        window.location.assign("/subscribe/confirmed/");
+        return;
+      }
+      pending = false;
+      if (button) button.disabled = false;
+      showError(quietError(data && data.msg));
+    }
+
+    window[cb] = function (data) { finish(data); };
+    script.onerror = function () { finish(null); };
+    script.src = endpoint + "?" + params.toString();
+    document.body.appendChild(script);
+  });
 })();
 </script>
 </body>
