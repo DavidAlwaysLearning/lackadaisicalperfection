@@ -121,6 +121,13 @@
     margin-top: 48px;
   }
   footer a { color: var(--glow); text-decoration: none; }
+  .contact {
+    display: table;
+    margin: 0.9rem auto 0;
+    padding-left: 1rem;
+    text-align: left;
+  }
+  .contact-label { margin-bottom: 0.15rem; }
   .catalog { list-style: none; padding: 0; margin: 0 auto 8px; max-width: 28rem; text-align: center; }
   .catalog li { padding: 5px 0; }
   .catalog a { color: var(--glow); text-decoration: none; }
@@ -145,6 +152,25 @@
   }
   .listen-note {
     margin: 8px 0 0;
+    font-size: 0.85rem;
+    color: var(--mute);
+  }
+  .single {
+    margin: 0 0 20px;
+  }
+  .single img {
+    display: block;
+    aspect-ratio: 1 / 1;
+    width: min(188px, 70%);
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    margin: 0 auto;
+    border-radius: 4px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+  }
+  .single figcaption {
+    margin: 10px 0 0;
     font-size: 0.85rem;
     color: var(--mute);
   }
@@ -197,6 +223,10 @@
   <p class="year">coming soon · solo piano</p>
 
   <div class="listen">
+    <figure class="single">
+      <img src="assets/tapestry-of-whispers-single-cover.jpg" width="1200" height="1200" alt="Woven hanging tapestry in blue, cream, gold, and red threads, with musical notes — cover art for the piano single Tapestry of Whispers">
+      <figcaption>First single · October 16, 2026</figcaption>
+    </figure>
     <p class="listen-label">Sample · Tapestry of Whispers</p>
     <audio controls preload="metadata" playsinline>
       <source src="assets/tapestry-of-whispers-sample.mp3" type="audio/mpeg">
@@ -253,9 +283,15 @@
   </ul>
 
   <footer>
-    © 2026 David Rivera
-    <br>
-    <a href="mailto:MelodicSubtletyProductions@gmail.com">MelodicSubtletyProductions@gmail.com</a>
+    © 2026 David Rivera<br>
+    <a href="https://music.apple.com/us/artist/david-rivera/1325691064">Apple Music</a> · <a href="https://open.spotify.com/artist/5qoC4NXvjfV3cylbXALzV3">Spotify</a>
+    <div class="contact">
+      <div class="contact-label">Contact:</div>
+      <div class="contact-body">
+        Mr. Miles Music (catalog for David Rivera)<br>
+        <a href="mailto:Mr.Miles.Music@subtletymedia.com">Mr.Miles.Music@subtletymedia.com</a>
+      </div>
+    </div>
   </footer>
 </main>
 </body>
