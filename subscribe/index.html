@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>
   (function () {
-    var base = "https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&id=98dfcedfd9";
+    // Modern Mailchimp hosted forms ignore EMAIL=; legacy_form=1 serves HTML
+    // that prefills MERGE0 from the EMAIL query param.
+    var base = "https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&id=98dfcedfd9&legacy_form=1";
     var params = new URLSearchParams(window.location.search);
     var email = params.get("EMAIL") || params.get("email") || "";
     var dest = email ? base + "&EMAIL=" + encodeURIComponent(email) : base;
@@ -24,7 +26,7 @@
 </head>
 <body>
   <p>Opening Melodic Subtlety Fans…</p>
-  <p><a id="fallback" href="https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&amp;id=98dfcedfd9">Subscribe to Melodic Subtlety</a></p>
+  <p><a id="fallback" href="https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&amp;id=98dfcedfd9&amp;legacy_form=1">Subscribe to Melodic Subtlety</a></p>
   <script>
   (function () {
     var params = new URLSearchParams(window.location.search);
@@ -32,7 +34,7 @@
     if (!email) return;
     var a = document.getElementById("fallback");
     if (a) {
-      a.href = "https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&id=98dfcedfd9&EMAIL=" + encodeURIComponent(email);
+      a.href = "https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&id=98dfcedfd9&legacy_form=1&EMAIL=" + encodeURIComponent(email);
     }
   })();
   </script>
