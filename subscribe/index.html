@@ -4,12 +4,37 @@
   <meta charset="utf-8">
   <title>Subscribe to Melodic Subtlety</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="0;url=https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&amp;id=98dfcedfd9">
-  <link rel="canonical" href="https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&amp;id=98dfcedfd9">
-  <script>location.replace("https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&id=98dfcedfd9");</script>
+  <script>
+  (function () {
+    var base = "https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&id=98dfcedfd9";
+    var params = new URLSearchParams(window.location.search);
+    var email = params.get("EMAIL") || params.get("email") || "";
+    var dest = email ? base + "&EMAIL=" + encodeURIComponent(email) : base;
+    var link = document.createElement("link");
+    link.rel = "canonical";
+    link.href = dest;
+    document.head.appendChild(link);
+    var meta = document.createElement("meta");
+    meta.httpEquiv = "refresh";
+    meta.content = "0;url=" + dest;
+    document.head.appendChild(meta);
+    window.location.replace(dest);
+  })();
+  </script>
 </head>
 <body>
   <p>Opening Melodic Subtlety Fans…</p>
-  <p><a href="https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&amp;id=98dfcedfd9">Subscribe to Melodic Subtlety</a></p>
+  <p><a id="fallback" href="https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&amp;id=98dfcedfd9">Subscribe to Melodic Subtlety</a></p>
+  <script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var email = params.get("EMAIL") || params.get("email") || "";
+    if (!email) return;
+    var a = document.getElementById("fallback");
+    if (a) {
+      a.href = "https://aol.us4.list-manage.com/subscribe?u=10ab8b56fb5ba972638358281&id=98dfcedfd9&EMAIL=" + encodeURIComponent(email);
+    }
+  })();
+  </script>
 </body>
 </html>
