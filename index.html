@@ -137,6 +137,7 @@
     max-width: 420px;
     margin: 0 auto 36px;
     text-align: center;
+    color-scheme: dark;
   }
   .listen-label {
     letter-spacing: 0.18em;
@@ -144,11 +145,6 @@
     font-size: 0.72rem;
     color: var(--mute);
     margin: 0 0 10px;
-  }
-  .listen audio {
-    width: 100%;
-    height: 40px;
-    border-radius: 8px;
   }
   .listen-note {
     margin: 8px 0 0;
@@ -158,16 +154,15 @@
   .single {
     margin: 0 0 20px;
   }
-  .single img {
+  .single video {
     display: block;
     aspect-ratio: 1 / 1;
-    width: min(188px, 70%);
+    width: min(360px, 100%);
     height: auto;
-    object-fit: cover;
-    object-position: center;
     margin: 0 auto;
     border-radius: 4px;
-    box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+    background: #1c1410;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
   }
   .single figcaption {
     margin: 10px 0 0;
@@ -238,15 +233,13 @@
 
   <div class="listen">
     <figure class="single">
-      <img src="assets/tapestry-of-whispers-single-cover.jpg" width="1200" height="1200" alt="Woven hanging tapestry in blue, cream, gold, and red threads, with musical notes — cover art for the piano single Tapestry of Whispers">
+      <video controls playsinline preload="metadata" poster="assets/tapestry-of-whispers-single-cover.jpg" width="1424" height="1424" aria-label="Animated sample of Tapestry of Whispers">
+        <source src="assets/tapestry-of-whispers-sample.mp4" type="video/mp4">
+      </video>
       <figcaption>First single · October 30, 2026</figcaption>
     </figure>
     <p class="listen-label">Sample · Tapestry of Whispers</p>
-    <audio controls preload="metadata" playsinline>
-      <source src="assets/tapestry-of-whispers-sample.mp3" type="audio/mpeg">
-      <source src="assets/tapestry-of-whispers-sample.m4a" type="audio/mp4">
-    </audio>
-    <p class="listen-note">About 55 seconds · full single out October 30, 2026</p>
+    <p class="listen-note">About 32 seconds · full single out October 30, 2026</p>
   </div>
 
   <div class="from-david">
