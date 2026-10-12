@@ -153,6 +153,7 @@
     text-underline-offset: 3px;
   }
 </style>
+<script src="/assets/site-tag.js" defer></script>
 </head>
 <body>
 <main>
@@ -286,7 +287,7 @@
       if (script.parentNode) script.parentNode.removeChild(script);
       try { delete window[cb]; } catch (err) { window[cb] = undefined; }
       if (data && data.result === "success") {
-        window.location.assign("/subscribe/confirmed/");
+        window.location.assign("/subscribe/thanks/");
         return;
       }
       pending = false;
