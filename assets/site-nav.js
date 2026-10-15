@@ -2,8 +2,8 @@
 (function () {
   var pages = [
     { href: "/", label: "Album" },
-    { href: "/apple/", label: "Apple Music" },
-    { href: "/spotify/", label: "Spotify" },
+    { href: "/apple/", label: "Apple Music", blank: true },
+    { href: "/spotify/", label: "Spotify", blank: true },
     { href: "/subscribe/", label: "Subscribe" },
     { href: "/scores/", label: "Scores" }
   ];
@@ -57,6 +57,10 @@
     var link = document.createElement("a");
     link.href = page.href;
     link.textContent = page.label;
+    if (page.blank) {
+      link.target = "_blank";
+      link.rel = "noopener";
+    }
     item.appendChild(link);
     list.appendChild(item);
   });
