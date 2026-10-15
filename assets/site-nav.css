@@ -1,0 +1,148 @@
+/* Photo button and page menu. Colors follow the album page. */
+:root {
+  --nav-ink: #f4ead6;
+  --nav-glow: #e0b24a;
+  --nav-navy: #1c1410;
+  --nav-line: rgba(224, 178, 74, 0.32);
+  --nav-size: 72px;
+  --nav-inset: 20px;
+}
+
+.nav-toggle {
+  position: fixed;
+  z-index: 40;
+  top: max(var(--nav-inset), env(safe-area-inset-top, 0px));
+  right: max(var(--nav-inset), env(safe-area-inset-right, 0px));
+  width: var(--nav-size);
+  height: var(--nav-size);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--nav-navy);
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow:
+    0 10px 28px rgba(14, 10, 8, 0.4),
+    0 2px 8px rgba(14, 10, 8, 0.22),
+    0 0 0 1px rgba(224, 178, 74, 0.5);
+}
+
+.nav-toggle img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.nav-toggle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(244, 234, 214, 0.22);
+}
+
+.nav-toggle:hover {
+  box-shadow:
+    0 12px 32px rgba(14, 10, 8, 0.46),
+    0 2px 8px rgba(14, 10, 8, 0.24),
+    0 0 0 1px rgba(224, 178, 74, 0.72);
+}
+
+.nav-toggle[aria-expanded="true"] {
+  box-shadow:
+    0 10px 28px rgba(14, 10, 8, 0.4),
+    0 2px 8px rgba(14, 10, 8, 0.22),
+    0 0 0 1px rgba(224, 178, 74, 0.88);
+}
+
+.nav-toggle:focus {
+  outline: none;
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--nav-glow);
+  outline-offset: 4px;
+}
+
+.site-menu {
+  position: fixed;
+  z-index: 39;
+  top: calc(max(var(--nav-inset), env(safe-area-inset-top, 0px)) + var(--nav-size) + 14px);
+  right: max(var(--nav-inset), env(safe-area-inset-right, 0px));
+  width: min(17.5rem, calc(100vw - 28px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));
+  max-height: calc(100vh - var(--nav-size) - var(--nav-inset) - 36px);
+  max-height: calc(100dvh - var(--nav-size) - var(--nav-inset) - 36px - env(safe-area-inset-bottom, 0px));
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: rgba(28, 20, 16, 0.94);
+  border: 1px solid var(--nav-line);
+  border-radius: 10px;
+  box-shadow: 0 18px 46px rgba(14, 10, 8, 0.38);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.site-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.7rem 0;
+}
+
+.site-menu.is-open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.site-menu a {
+  display: block;
+  padding: 0.78rem 1.45rem;
+  color: var(--nav-ink);
+  font-family: "Cormorant Garamond", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.site-menu a:hover {
+  color: var(--nav-glow);
+}
+
+.site-menu a:focus {
+  outline: none;
+}
+
+.site-menu a:focus-visible {
+  outline: 2px solid var(--nav-glow);
+  outline-offset: -3px;
+  color: var(--nav-glow);
+}
+
+@media (max-width: 760px) {
+  :root {
+    --nav-size: 64px;
+    --nav-inset: 14px;
+  }
+
+  body > main {
+    padding-top: 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-menu {
+    transform: none;
+    transition: none;
+  }
+}
