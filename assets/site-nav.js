@@ -65,12 +65,84 @@
     list.appendChild(item);
   });
 
+  /* Newest first. Domains are each repo's CNAME. This site is Lackadaisical Perfection. */
+  var albums = [
+    { title: "Lackadaisical Perfection", host: "lackadaisicalperfection.com", slug: "lackadaisical-perfection" },
+    { title: "Piano Reveries and Phantasies", host: "pianoreveries.com", slug: "piano-reveries" },
+    { title: "Smitten with the Muses", host: "smittenwiththemuses.com", slug: "smitten-with-the-muses" },
+    { title: "Where In The World Is Diane", host: "whereintheworldisdiane.com", slug: "where-in-the-world-is-diane" },
+    { title: "Clean Calm Piano", host: "cleancalmpiano.com", slug: "clean-calm-piano" },
+    { title: "Tantalizing Proof", host: "tantalizingproof.com", slug: "tantalizing-proof" },
+    { title: "Piano In Colors", host: "pianoincolors.com", slug: "piano-in-colors" },
+    { title: "Melodic Subtlety", host: "melodicsubtlety.com", slug: "melodic-subtlety" }
+  ];
+
+  function albumIsHere(album) {
+    var host = (location.hostname || "").replace(/^www\./, "");
+    if (host === album.host) return true;
+    return (host === "localhost" || host === "127.0.0.1" || host === "") &&
+      album.host === "lackadaisicalperfection.com";
+  }
+
+  var albumsSection = document.createElement("section");
+  albumsSection.className = "albums";
+  albumsSection.setAttribute("aria-label", "Albums");
+
+  var albumsLabel = document.createElement("p");
+  albumsLabel.className = "albums-label";
+  albumsLabel.textContent = "Albums";
+  albumsSection.appendChild(albumsLabel);
+
+  var albumList = document.createElement("ul");
+  albumList.className = "album-list";
+  albums.forEach(function (album) {
+    var item = document.createElement("li");
+    var img = document.createElement("img");
+    img.src = "/assets/albums/" + album.slug + ".jpg";
+    img.srcset = "/assets/albums/" + album.slug + ".jpg 1x, /assets/albums/" + album.slug + "@2x.jpg 2x";
+    img.width = 48;
+    img.height = 48;
+    img.alt = "";
+    img.decoding = "async";
+
+    var copy = document.createElement("span");
+    copy.className = "album-copy";
+    var name = document.createElement("span");
+    name.className = "album-title";
+    name.textContent = album.title;
+    copy.appendChild(name);
+
+    if (albumIsHere(album)) {
+      var here = document.createElement("div");
+      here.className = "here";
+      here.setAttribute("aria-current", "page");
+      var note = document.createElement("span");
+      note.className = "here-note";
+      note.textContent = "You're here";
+      copy.appendChild(note);
+      here.appendChild(img);
+      here.appendChild(copy);
+      item.appendChild(here);
+    } else {
+      var link = document.createElement("a");
+      link.href = "https://" + album.host + "/";
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.appendChild(img);
+      link.appendChild(copy);
+      item.appendChild(link);
+    }
+    albumList.appendChild(item);
+  });
+  albumsSection.appendChild(albumList);
+
   var menu = document.createElement("nav");
   menu.id = "site-menu";
   menu.className = "site-menu";
   menu.setAttribute("aria-label", "Pages");
   menu.hidden = true;
   menu.appendChild(list);
+  menu.appendChild(albumsSection);
 
   document.body.appendChild(button);
   document.body.appendChild(menu);

@@ -1,6 +1,7 @@
 /* Photo button and page menu. Colors follow the album page. */
 :root {
   --nav-ink: #f4ead6;
+  --nav-mute: #c4b089;
   --nav-glow: #e0b24a;
   --nav-navy: #1c1410;
   --nav-line: rgba(224, 178, 74, 0.32);
@@ -129,6 +130,93 @@
   color: var(--nav-glow);
 }
 
+.albums {
+  margin: 0;
+  padding: 0 0 0.85rem;
+  border-top: 1px solid var(--nav-line);
+}
+
+.albums-label {
+  margin: 0.95rem 1.45rem 0.45rem;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--nav-mute);
+}
+
+.site-menu .album-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.1rem 0.85rem 0.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.album-list a,
+.album-list .here {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.35rem 0.45rem;
+  color: var(--nav-ink);
+  font-family: "Cormorant Garamond", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.album-list img {
+  width: 48px;
+  height: 48px;
+  flex: none;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(224, 178, 74, 0.22);
+}
+
+.album-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  min-width: 0;
+}
+
+.here-note {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nav-mute);
+}
+
+.album-list .here {
+  color: var(--nav-mute);
+}
+
+.album-list .here img {
+  opacity: 0.72;
+}
+
+.album-list a:hover {
+  color: var(--nav-glow);
+}
+
+.album-list a:focus {
+  outline: none;
+}
+
+.album-list a:focus-visible {
+  outline: 2px solid var(--nav-glow);
+  outline-offset: 2px;
+  color: var(--nav-glow);
+}
+
 @media (max-width: 760px) {
   :root {
     --nav-size: 64px;
@@ -137,6 +225,23 @@
 
   body > main {
     padding-top: 96px;
+  }
+
+  .site-menu .album-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.95rem 0.7rem;
+    padding: 0.35rem 1rem 0.35rem;
+  }
+
+  .album-list a,
+  .album-list .here {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0;
+    text-align: center;
+    font-size: 1.05rem;
   }
 }
 
