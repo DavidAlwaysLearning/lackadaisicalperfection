@@ -1,11 +1,10 @@
-/* Site menu. Add a page by appending one entry; the open menu lists every other page. */
+/* Site menu. Add a destination by appending one entry. The open menu lists every other destination. The confirmation page is not a destination. */
 (function () {
   var pages = [
     { href: "/", label: "Album" },
     { href: "/apple/", label: "Apple Music" },
     { href: "/spotify/", label: "Spotify" },
     { href: "/subscribe/", label: "Subscribe" },
-    { href: "/subscribe/confirmed/", label: "You’re in" },
     { href: "/scores/", label: "Scores" }
   ];
 
