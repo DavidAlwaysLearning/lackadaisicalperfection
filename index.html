@@ -167,6 +167,31 @@
     font-size: 0.85rem;
     color: var(--mute);
   }
+  .listen-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 4px 0 14px;
+  }
+  .listen-cta a.primary {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 999px;
+    background: var(--glow);
+    color: #1c1410;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .listen-cta a.primary:hover { filter: brightness(1.08); }
+  .listen-cta a.secondary {
+    color: var(--glow);
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  .listen-cta a.secondary:hover { text-decoration: underline; }
   .score {
     max-width: 34rem;
     margin: 28px auto 40px;
@@ -321,6 +346,10 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
       </video>
       <figcaption>First single · October 16, 2026</figcaption>
     </figure>
+    <div class="listen-cta">
+      <a class="primary" href="/spotify/" target="_blank" rel="noopener">Listen to Tapestry of Whispers on Spotify</a>
+      <a class="secondary" href="/apple/" target="_blank" rel="noopener">or on Apple Music</a>
+    </div>
     <p class="listen-label">Sample · Tapestry of Whispers</p>
     <p class="listen-note">About 32 seconds · full single out October 16, 2026</p>
   </div>
