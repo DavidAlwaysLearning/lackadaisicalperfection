@@ -143,6 +143,32 @@
     font-size: 0.85rem;
     margin-top: 4.5rem;
   }
+  .score .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin: 1.15rem 0 0.3rem;
+  }
+  .score .title h2 { margin: 0; }
+  .score .cover {
+    flex: none;
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+  }
+  .score .cover img {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    box-shadow: none;
+    object-fit: cover;
+  }
+  .score a.cover:hover { transform: scale(1.06); }
+  .score a.cover:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; }
 </style>
 <script src="/assets/site-nav.js" defer></script>
 <!-- Meta Pixel Code -->
@@ -179,19 +205,19 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
   <ul class="library">
     <li class="score">
       <img src="/assets/tapestry-of-whispers-score-page-1.png" width="1275" height="1650" alt="First page of the Tapestry of Whispers piano score">
-      <h2>Tapestry of Whispers</h2>
+      <div class="title"><a class="cover" href="https://open.spotify.com/track/5EEBYde0Cn459esR9Kohjn" target="_blank" rel="noopener"><img src="/assets/covers/tapestry-of-whispers-96.jpg" width="40" height="40" alt="Listen to Tapestry of Whispers on Spotify" loading="lazy"></a><h2>Tapestry of Whispers</h2></div>
       <p class="edition">Piano score · 3 pages</p>
       <p class="get"><a href="/assets/tapestry-of-whispers-score.pdf?v=locked" download="Tapestry-of-Whispers-David-Rivera-piano-score.pdf">Free PDF</a></p>
     </li>
     <li class="score">
       <img src="/assets/tapestry-of-whispers-chords-page-1.png" width="1275" height="1650" alt="First page of the Tapestry of Whispers chord edition" loading="lazy">
-      <h2>Tapestry of Whispers</h2>
+      <div class="title"><a class="cover" href="https://open.spotify.com/track/5EEBYde0Cn459esR9Kohjn" target="_blank" rel="noopener"><img src="/assets/covers/tapestry-of-whispers-96.jpg" width="40" height="40" alt="Listen to Tapestry of Whispers on Spotify" loading="lazy"></a><h2>Tapestry of Whispers</h2></div>
       <p class="edition">With chords · 3 pages</p>
       <p class="get"><a href="/assets/tapestry-of-whispers-chords.pdf?v=chords" download="Tapestry-of-Whispers-David-Rivera-chord-edition.pdf">Free PDF</a></p>
     </li>
     <li class="score">
       <img src="/assets/luminescent-dreams-score-page-1.png" width="1275" height="1650" alt="First page of the Luminescent Dreams piano score" loading="lazy">
-      <h2>Luminescent Dreams</h2>
+      <div class="title"><span class="cover"><img src="/assets/covers/luminescent-dreams-96.jpg" width="40" height="40" alt="Luminescent Dreams single cover (out November 6, 2026)" loading="lazy"></span><h2>Luminescent Dreams</h2></div>
       <p class="edition">Out Friday, November 6, 2026 · full score and chord edition on release day</p>
     </li>
   </ul>
@@ -201,31 +227,31 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
   <ul class="library">
     <li class="score">
       <img src="/assets/obsession-score-page-1.png" width="1275" height="1650" alt="First page of the Obsession piano score" loading="lazy">
-      <h2>Obsession</h2>
+      <div class="title"><a class="cover" href="https://open.spotify.com/track/1lBCRmvVNIjltDzYi80JSI" target="_blank" rel="noopener"><img src="/assets/covers/melodic-subtlety-96.jpg" width="40" height="40" alt="Listen to Obsession on Spotify" loading="lazy"></a><h2>Obsession</h2></div>
       <p class="edition">Piano score · G minor · 5 pages</p>
       <p class="get"><a href="/assets/obsession-score.pdf" download="Obsession-David-Rivera-piano-score-G-minor.pdf">Free PDF</a></p>
     </li>
     <li class="score">
       <img src="/assets/obsession-chords-g-minor-page-1.png" width="1275" height="1650" alt="First page of the Obsession chord edition in G minor" loading="lazy">
-      <h2>Obsession</h2>
+      <div class="title"><a class="cover" href="https://open.spotify.com/track/1lBCRmvVNIjltDzYi80JSI" target="_blank" rel="noopener"><img src="/assets/covers/melodic-subtlety-96.jpg" width="40" height="40" alt="Listen to Obsession on Spotify" loading="lazy"></a><h2>Obsession</h2></div>
       <p class="edition">With chords · G minor · 5 pages</p>
       <p class="get"><a href="/assets/obsession-chords-g-minor.pdf" download="Obsession-David-Rivera-chords-G-minor.pdf">Free PDF</a></p>
     </li>
     <li class="score">
       <img src="/assets/obsession-chords-a-minor-page-1.png" width="1275" height="1650" alt="First page of the Obsession chord edition in A minor" loading="lazy">
-      <h2>Obsession</h2>
+      <div class="title"><a class="cover" href="https://open.spotify.com/track/1lBCRmvVNIjltDzYi80JSI" target="_blank" rel="noopener"><img src="/assets/covers/melodic-subtlety-96.jpg" width="40" height="40" alt="Listen to Obsession on Spotify" loading="lazy"></a><h2>Obsession</h2></div>
       <p class="edition">With chords · A minor · 6 pages</p>
       <p class="get"><a href="/assets/obsession-chords-a-minor.pdf" download="Obsession-David-Rivera-chords-A-minor.pdf">Free PDF</a></p>
     </li>
     <li class="score">
       <img src="/assets/halcyon-score-page-1.png" width="1275" height="1650" alt="First page of the Halcyon piano score" loading="lazy">
-      <h2>Halcyon</h2>
+      <div class="title"><a class="cover" href="https://open.spotify.com/track/63f3kwienzLlNG3Qzx2TIz" target="_blank" rel="noopener"><img src="/assets/covers/melodic-subtlety-96.jpg" width="40" height="40" alt="Listen to Halcyon on Spotify" loading="lazy"></a><h2>Halcyon</h2></div>
       <p class="edition">Piano score · 4 pages</p>
       <p class="get"><a href="/assets/halcyon-score.pdf" download="Halcyon-David-Rivera-piano-score.pdf">Free PDF</a></p>
     </li>
     <li class="score">
       <img src="/assets/halcyon-chords-page-1.png" width="1275" height="1650" alt="First page of the Halcyon chord edition" loading="lazy">
-      <h2>Halcyon</h2>
+      <div class="title"><a class="cover" href="https://open.spotify.com/track/63f3kwienzLlNG3Qzx2TIz" target="_blank" rel="noopener"><img src="/assets/covers/melodic-subtlety-96.jpg" width="40" height="40" alt="Listen to Halcyon on Spotify" loading="lazy"></a><h2>Halcyon</h2></div>
       <p class="edition">With chords · 4 pages</p>
       <p class="get"><a href="/assets/halcyon-chords.pdf" download="Halcyon-David-Rivera-chords.pdf">Free PDF</a></p>
     </li>
