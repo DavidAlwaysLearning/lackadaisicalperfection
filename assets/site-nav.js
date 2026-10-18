@@ -1,3 +1,52 @@
+/* Phones: music store links open in the same tab, so the app launches without leaving a blank tab behind.
+   Computers keep opening them in a new window. Runs on its own, before the menu code, and also catches
+   links the menu adds later (checked again at tap time). */
+(function () {
+  var stores = ["open.spotify.com", "music.apple.com", "music.youtube.com"];
+  var redirects = ["/spotify/", "/apple/", "/youtube-music/"];
+
+  function isPhone() {
+    var ua = navigator.userAgent || "";
+    if (/iPhone|iPad|iPod|Android/i.test(ua)) return true;
+    if (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) return true; /* iPadOS */
+    return !!(window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
+  }
+
+  function isMusicLink(a) {
+    var raw = a.getAttribute("href");
+    if (!raw) return false;
+    var url;
+    try { url = new URL(raw, location.href); } catch (err) { return false; }
+    var host = url.hostname.toLowerCase();
+    if (stores.indexOf(host) !== -1) return true;
+    if (url.origin !== location.origin) return false;
+    var path = url.pathname.replace(/index\.html$/, "");
+    if (path.charAt(path.length - 1) !== "/") path += "/";
+    return redirects.indexOf(path) !== -1;
+  }
+
+  function sameTab(a) {
+    if (a.getAttribute("target") === "_blank" && isMusicLink(a)) a.removeAttribute("target");
+  }
+
+  function sweep() {
+    if (!isPhone()) return;
+    var links = document.querySelectorAll("a[target=_blank]");
+    for (var i = 0; i < links.length; i++) sameTab(links[i]);
+  }
+
+  /* Tap time, capture phase: runs before the browser follows the link and leaves other click handlers alone. */
+  document.addEventListener("click", function (event) {
+    if (!isPhone()) return;
+    var a = event.target && event.target.closest ? event.target.closest("a[href]") : null;
+    if (a) sameTab(a);
+  }, true);
+
+  /* After the menu code below has built its links (and on sites where it re-adds new-window targets). */
+  setTimeout(sweep, 0);
+  window.addEventListener("load", sweep);
+})();
+
 /* Site menu. Add a destination by appending one entry. The open menu lists every other destination. The confirmation page is not a destination. */
 (function () {
   var pages = [
