@@ -2,10 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Tapestry of Whispers on Spotify</title>
+  <title>Tapestry of Whispers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="0;url=https://open.spotify.com/track/5EEBYde0Cn459esR9Kohjn">
-  <link rel="canonical" href="https://open.spotify.com/track/5EEBYde0Cn459esR9Kohjn">
+  <meta name="description" content="Tapestry of Whispers by David Rivera, American composer. Listen on Spotify or Apple Music.">
+  <link rel="canonical" href="https://lackadaisicalperfection.com/spotify/">
+  <meta property="og:type" content="music.song">
+  <meta property="og:site_name" content="Lackadaisical Perfection">
+  <meta property="og:title" content="Tapestry of Whispers">
+  <meta property="og:description" content="Tapestry of Whispers by David Rivera, American composer. Listen on Spotify or Apple Music.">
+  <meta property="og:url" content="https://lackadaisicalperfection.com/spotify/">
+  <meta property="og:image" content="https://lackadaisicalperfection.com/assets/tapestry-of-whispers-single-cover.jpg">
+  <meta property="og:image:alt" content="Cover of Tapestry of Whispers by David Rivera">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -25,14 +32,207 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500&family=Source+Sans+3:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site-nav.css">
   <script src="/assets/site-nav.js" defer></script>
-  <script>location.replace("https://open.spotify.com/track/5EEBYde0Cn459esR9Kohjn");</script>
+  <style>
+    :root {
+      --navy: #1c1410;
+      --ink: #f4ead6;
+      --mute: #c4b089;
+      --glow: #e0b24a;
+      --line: rgba(224,178,74,0.28);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(ellipse at 50% 0%, #5a3a28 0%, #1c1410 55%, #0e0a08 100%);
+      color: var(--ink);
+      font-family: "Source Sans 3", sans-serif;
+      font-weight: 300;
+      line-height: 1.65;
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+    main {
+      max-width: 440px;
+      margin: 0 auto;
+      padding: 56px 24px calc(env(safe-area-inset-bottom, 0px) + 48px);
+    }
+    .cover {
+      display: block;
+      width: min(320px, 100%);
+      height: auto;
+      margin: 0 auto 28px;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    }
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 8vw, 2.6rem);
+      line-height: 1.15;
+      text-align: center;
+      margin: 0;
+      letter-spacing: 0.01em;
+    }
+    .byline {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.35rem;
+      text-align: center;
+      margin: 10px 0 0;
+    }
+    .role {
+      text-align: center;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: var(--glow);
+      margin: 8px 0 0;
+    }
+    .rule {
+      border: 0;
+      border-top: 1px solid var(--line);
+      width: 64px;
+      margin: 28px auto;
+    }
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 0;
+    }
+    .actions a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 56px;
+      padding: 16px 20px;
+      border-radius: 999px;
+      font-size: 1.0625rem;
+      font-weight: 500;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .actions a.spotify {
+      background: var(--glow);
+      color: var(--navy);
+    }
+    .actions a.spotify:hover { filter: brightness(1.08); }
+    .actions a.apple {
+      color: var(--glow);
+      background: transparent;
+      box-shadow: inset 0 0 0 1.5px rgba(224,178,74,0.85);
+    }
+    .actions a.apple:hover { background: rgba(224,178,74,0.08); }
+    .actions a:focus { outline: none; }
+    .actions a:focus-visible {
+      outline: 2px solid var(--glow);
+      outline-offset: 3px;
+    }
+    /* Phones: site-nav.css sets body > main { padding-top: 96px } so the menu button clears the cover. */
+    @media (max-height: 680px) {
+      .cover {
+        width: min(188px, 64%);
+        margin-bottom: 14px;
+      }
+      .byline { margin-top: 6px; }
+      .role { margin-top: 4px; }
+      .rule { margin: 16px auto; }
+      main { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); }
+    }
+    @media (min-width: 761px) {
+      .cover { width: min(360px, 100%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .actions a { transition: none; }
+    }
+  </style>
 </head>
 <body>
-  <p>Opening Spotify…</p>
-  <p><a href="https://open.spotify.com/track/5EEBYde0Cn459esR9Kohjn" target="_blank" rel="noopener">Tapestry of Whispers on Spotify</a></p>
+<main>
+  <img class="cover" src="/assets/tapestry-of-whispers-single-cover.jpg" width="1200" height="1200" alt="Cover of Tapestry of Whispers by David Rivera">
+  <h1>Tapestry of Whispers</h1>
+  <p class="byline">David Rivera</p>
+  <p class="role">American composer</p>
+  <hr class="rule">
+  <div class="actions">
+    <a class="spotify" data-tap="SpotifyTap" href="https://open.spotify.com/track/5EEBYde0Cn459esR9Kohjn" target="_blank" rel="noopener">Listen on Spotify</a>
+    <a class="apple" data-tap="AppleTap" href="https://music.apple.com/us/album/tapestry-of-whispers/6820663406?i=6820663407&amp;ls=1" target="_blank" rel="noopener">Listen on Apple Music</a>
+  </div>
+</main>
+<script>
+/* Phones: site-nav.js strips target="_blank" on music links before this runs,
+   so the tap stays in this tab. Leaving the page can cancel the pixel, so
+   wait for fbq's eventCallback, with a short timeout if the pixel never answers.
+   Desktop keeps the new tab: the pixel is sent first, then the tab opens
+   in this same click. This page stays up, so the hit is not dropped.
+   Inbound utm_* (and any other query) stays on this page. Store hrefs are
+   absolute and are never rebuilt from location.search, so Apple's i and ls
+   parameters cannot be broken by a second question mark. */
+(function () {
+  var WAIT_MS = 300;
+  var buttons = document.querySelectorAll("a[data-tap]");
+
+  function plainClick(event) {
+    if (event.defaultPrevented) return false;
+    if (event.button !== 0) return false;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return false;
+    return true;
+  }
+
+  function openStore(href) {
+    var opened = window.open(href, "_blank");
+    if (opened) {
+      try { opened.opener = null; } catch (err) {}
+      return;
+    }
+    location.assign(href);
+  }
+
+  buttons.forEach(function (a) {
+    a.addEventListener("click", function (event) {
+      if (!plainClick(event)) return;
+      if (typeof fbq !== "function") return;
+
+      var name = a.getAttribute("data-tap");
+      if (name !== "SpotifyTap" && name !== "AppleTap") return;
+
+      var href = a.href;
+      if (!href) return;
+
+      var newTab = a.getAttribute("target") === "_blank";
+      event.preventDefault();
+
+      if (newTab) {
+        try { fbq("trackCustom", name); } catch (err) {}
+        openStore(href);
+        return;
+      }
+
+      var left = false;
+      function leave() {
+        if (left) return;
+        left = true;
+        location.assign(href);
+      }
+
+      try {
+        fbq("trackCustom", name, {}, { eventCallback: leave });
+      } catch (err) {
+        leave();
+        return;
+      }
+      window.setTimeout(leave, WAIT_MS);
+    });
+  });
+})();
+</script>
 <!-- GoatCounter: privacy-friendly page view + score-download counts (no cookies). -->
 <script>window.goatcounter = {path: function(p) { return location.host + p }}</script>
 <script data-goatcounter="https://subtletymedia.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
