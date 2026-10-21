@@ -1,0 +1,108 @@
+/* Quiet page for one free score. Colors follow the album. */
+:root {
+  --navy: #1c1410;
+  --ink: #f4ead6;
+  --mute: #c4b089;
+  --glow: #e0b24a;
+  --line: rgba(224, 178, 74, 0.28);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: radial-gradient(ellipse at 50% 0%, #5a3a28 0%, #1c1410 55%, #0e0a08 100%);
+  color: var(--ink);
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 300;
+  line-height: 1.65;
+  min-height: 100vh;
+}
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 64px 24px 88px;
+}
+.eyebrow {
+  text-align: center;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--glow);
+  margin: 0 0 10px;
+}
+h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+  font-size: clamp(1.85rem, 5vw, 2.5rem);
+  text-align: center;
+  margin: 0 0 14px;
+  letter-spacing: 0.01em;
+}
+.note {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.18rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--ink);
+  margin: 0 auto 28px;
+  max-width: 34rem;
+}
+figure {
+  margin: 0 auto;
+  max-width: 34rem;
+}
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #f7f4ee;
+  border-radius: 2px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+.edition {
+  text-align: center;
+  color: var(--mute);
+  font-size: 0.92rem;
+  margin: 0.95rem 0 0;
+}
+.get,
+.listen,
+.also,
+.back {
+  text-align: center;
+  margin: 0.85rem 0 0;
+}
+.get a,
+.listen a,
+.also a,
+.back a {
+  color: var(--glow);
+  text-decoration: none;
+}
+.get a:hover,
+.listen a:hover,
+.also a:hover,
+.back a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.get a:focus,
+.listen a:focus,
+.also a:focus,
+.back a:focus {
+  outline: none;
+}
+.get a:focus-visible,
+.listen a:focus-visible,
+.also a:focus-visible,
+.back a:focus-visible {
+  outline: 2px solid var(--glow);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+.listen,
+.also,
+.back {
+  color: var(--mute);
+  font-size: 0.92rem;
+}
+.back { margin-top: 1.75rem; }
