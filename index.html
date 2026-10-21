@@ -413,6 +413,127 @@
     max-width: 28rem;
   }
 
+  .woven {
+    max-width: 38rem;
+    margin: 0 auto 12px;
+    text-align: center;
+  }
+  .woven h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: 1.45rem;
+    letter-spacing: 0.01em;
+    margin: 0 0 16px;
+  }
+  .woven figure { margin: 0; }
+  .woven-frame {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #163044;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  }
+  .woven-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(224, 178, 74, 0.28);
+    pointer-events: none;
+  }
+  .woven-facade {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #163044;
+    aspect-ratio: 16 / 9;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .woven-facade:focus { outline: none; }
+  .woven-facade:focus-visible {
+    outline: 2px solid var(--glow);
+    outline-offset: 4px;
+  }
+  .woven-facade img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .woven-play {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    width: 64px;
+    height: 64px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba(28, 20, 16, 0.38);
+    border: 1px solid rgba(244, 234, 214, 0.72);
+    box-shadow: 0 10px 28px rgba(14, 10, 8, 0.32);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    pointer-events: none;
+  }
+  .woven-play::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-42%, -50%);
+    border-style: solid;
+    border-width: 8px 0 8px 13px;
+    border-color: transparent transparent transparent var(--ink);
+  }
+  .woven-facade:hover .woven-play,
+  .woven-facade:focus-visible .woven-play {
+    background: rgba(28, 20, 16, 0.52);
+    border-color: rgba(224, 178, 74, 0.92);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .woven-play {
+      transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease;
+    }
+    .woven-facade:hover .woven-play,
+    .woven-facade:focus-visible .woven-play {
+      transform: translate(-50%, -50%) scale(1.04);
+    }
+  }
+  .woven-embed {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 0;
+    background: #163044;
+  }
+  .woven figcaption {
+    margin: 14px auto 0;
+    max-width: 28rem;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.45;
+    color: var(--mute);
+  }
+  .woven-fallback {
+    margin: 10px 0 0;
+    font-size: 0.85rem;
+  }
+  .woven-fallback a {
+    color: var(--glow);
+    text-decoration: none;
+  }
+  .woven-fallback a:hover { text-decoration: underline; }
+
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -469,6 +590,22 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
     </div>
     <p class="listen-label">Sample · Tapestry of Whispers</p>
   </div>
+
+  <section class="woven" id="how-it-was-woven" aria-labelledby="woven-title">
+    <h2 id="woven-title">How It Was Woven</h2>
+    <figure>
+      <div class="woven-frame">
+        <button type="button" class="woven-facade" data-youtube-id="qoK6yj5SjIA" aria-label="Play Tapestry of Whispers: How It Was Woven">
+          <img src="https://i.ytimg.com/vi/qoK6yj5SjIA/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer">
+          <span class="woven-play" aria-hidden="true"></span>
+        </button>
+      </div>
+      <figcaption>Before it was a song, it was a thread.</figcaption>
+    </figure>
+    <noscript>
+      <p class="woven-fallback"><a href="https://www.youtube.com/watch?v=qoK6yj5SjIA">Tapestry of Whispers: How It Was Woven</a></p>
+    </noscript>
+  </section>
 
   <section class="score">
     <h2>The Complete Score</h2>
@@ -536,6 +673,26 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
     </div>
   </footer>
 </main>
+<script>
+(function () {
+  var button = document.querySelector(".woven-facade");
+  if (!button) return;
+  button.addEventListener("click", function () {
+    var id = button.getAttribute("data-youtube-id");
+    if (!id || !/^[A-Za-z0-9_-]{11}$/.test(id)) return;
+    var frame = document.createElement("iframe");
+    frame.className = "woven-embed";
+    frame.title = "Tapestry of Whispers: How It Was Woven";
+    frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&playsinline=1&rel=0";
+    frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = "strict-origin-when-cross-origin";
+    frame.tabIndex = -1;
+    button.replaceWith(frame);
+    frame.focus({ preventScroll: true });
+  });
+})();
+</script>
 <!-- GoatCounter: privacy-friendly page view + score-download counts (no cookies). -->
 <script>window.goatcounter = {path: function(p) { return location.host + p }}</script>
 <script data-goatcounter="https://subtletymedia.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
