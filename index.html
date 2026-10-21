@@ -421,9 +421,11 @@
   .woven h2 {
     font-family: "Cormorant Garamond", serif;
     font-weight: 400;
-    font-size: 1.45rem;
+    font-style: italic;
+    font-size: 1.22rem;
     letter-spacing: 0.01em;
-    margin: 0 0 16px;
+    margin: 0 0 14px;
+    color: var(--ink);
   }
   .woven figure { margin: 0; }
   .woven-frame {
@@ -516,23 +518,29 @@
     background: #163044;
   }
   .woven figcaption {
-    margin: 14px auto 0;
-    max-width: 28rem;
+    margin: 16px auto 0;
+    max-width: 34rem;
     font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-size: 1.15rem;
-    line-height: 1.45;
+    font-size: 1.18rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .woven-reply {
+    display: block;
+    margin-top: 8px;
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.01em;
     color: var(--mute);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: rgba(196, 176, 137, 0.5);
+    text-underline-offset: 0.22em;
   }
-  .woven-fallback {
-    margin: 10px 0 0;
-    font-size: 0.85rem;
-  }
-  .woven-fallback a {
+  .woven-reply:hover {
     color: var(--glow);
-    text-decoration: none;
+    text-decoration-color: rgba(224, 178, 74, 0.75);
   }
-  .woven-fallback a:hover { text-decoration: underline; }
 
 </style>
 <!-- Meta Pixel Code -->
@@ -591,20 +599,20 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
     <p class="listen-label">Sample · Tapestry of Whispers</p>
   </div>
 
-  <section class="woven" id="how-it-was-woven" aria-labelledby="woven-title">
-    <h2 id="woven-title">How It Was Woven</h2>
+  <section class="woven" id="little-film" aria-labelledby="woven-title">
+    <h2 id="woven-title">The music, and a little film</h2>
     <figure>
       <div class="woven-frame">
-        <button type="button" class="woven-facade" data-youtube-id="qoK6yj5SjIA" aria-label="Play Tapestry of Whispers: How It Was Woven">
+        <button type="button" class="woven-facade" data-youtube-id="qoK6yj5SjIA" aria-label="Play a little film for Tapestry of Whispers">
           <img src="https://i.ytimg.com/vi/qoK6yj5SjIA/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer">
           <span class="woven-play" aria-hidden="true"></span>
         </button>
       </div>
-      <figcaption>Before it was a song, it was a thread.</figcaption>
+      <figcaption>
+        I composed this piece, and the music inspired me to make a little video, just for fun. I’d love to hear what you think.
+        <a class="woven-reply" href="https://www.youtube.com/watch?v=qoK6yj5SjIA" target="_blank" rel="noopener">Tell me on YouTube</a>
+      </figcaption>
     </figure>
-    <noscript>
-      <p class="woven-fallback"><a href="https://www.youtube.com/watch?v=qoK6yj5SjIA">Tapestry of Whispers: How It Was Woven</a></p>
-    </noscript>
   </section>
 
   <section class="score">
@@ -682,7 +690,7 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
     if (!id || !/^[A-Za-z0-9_-]{11}$/.test(id)) return;
     var frame = document.createElement("iframe");
     frame.className = "woven-embed";
-    frame.title = "Tapestry of Whispers: How It Was Woven";
+    frame.title = "Tapestry of Whispers, a little film";
     frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&playsinline=1&rel=0";
     frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
     frame.allowFullscreen = true;
