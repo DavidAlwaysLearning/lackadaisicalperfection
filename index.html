@@ -458,7 +458,7 @@
     -webkit-tap-highlight-color: transparent;
   }
   .woven-facade:focus { outline: none; }
-  .woven-facade:focus-visible {
+  .woven-frame:has(.woven-facade:focus-visible) {
     outline: 2px solid var(--glow);
     outline-offset: 4px;
   }
