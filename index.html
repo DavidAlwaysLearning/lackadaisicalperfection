@@ -28,103 +28,137 @@
 <meta name="twitter:image:alt" content="Cover of Lackadaisical Perfection: a cubist painting with piano keys and gold type">
 <script type="application/ld+json">
 {
- "@context": "https://schema.org",
- "@type": "MusicAlbum",
- "name": "Lackadaisical Perfection",
- "url": "https://lackadaisicalperfection.com/",
- "image": "https://lackadaisicalperfection.com/assets/cover.jpg",
- "byArtist": {
-  "@type": "Person",
-  "name": "David Rivera",
-  "sameAs": [
-   "https://open.spotify.com/artist/5qoC4NXvjfV3cylbXALzV3",
-   "https://music.apple.com/us/artist/david-rivera/1325691064",
-   "https://www.facebook.com/pianoincolors",
-   "https://www.instagram.com/pianodavid1492/"
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://lackadaisicalperfection.com/about/#david-rivera",
+      "name": "David Rivera",
+      "jobTitle": "American composer",
+      "description": "David Rivera is an American composer of piano-led instrumental music. He plays and samples every instrument on his recordings himself. He is a member of ASCAP.",
+      "url": "https://lackadaisicalperfection.com/about/",
+      "nationality": {
+        "@type": "Country",
+        "name": "United States"
+      },
+      "memberOf": {
+        "@type": "Organization",
+        "name": "ASCAP",
+        "url": "https://www.ascap.com/"
+      },
+      "affiliation": {
+        "@id": "https://lackadaisicalperfection.com/about/#subtlety-media"
+      },
+      "sameAs": [
+        "https://open.spotify.com/artist/5qoC4NXvjfV3cylbXALzV3",
+        "https://music.apple.com/us/artist/david-rivera/1325691064",
+        "https://x.com/melodicsubtlety",
+        "https://www.facebook.com/pianoincolors",
+        "https://www.instagram.com/pianodavid1492/",
+        "https://www.pandora.com/artist/david-rivera/ARXtg47gfjlv3nJ",
+        "https://www.youtube.com/channel/UCDqZ1e9Ur4PHynEylN_mJDg"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://lackadaisicalperfection.com/about/#subtlety-media",
+      "name": "Subtlety Media, LLC",
+      "url": "https://lackadaisicalperfection.com/about/"
+    },
+    {
+      "@type": "MusicAlbum",
+      "name": "Lackadaisical Perfection",
+      "url": "https://lackadaisicalperfection.com/",
+      "image": "https://lackadaisicalperfection.com/assets/cover.jpg",
+      "byArtist": {
+        "@id": "https://lackadaisicalperfection.com/about/#david-rivera"
+      },
+      "datePublished": "2027-01-08",
+      "numTracks": 11,
+      "description": "Eleven new pieces; three singles before the album. Anxious tranquility, a voyage, a tapestry of whispers, luminescent dreams.",
+      "genre": [
+        "Piano",
+        "Neoclassical"
+      ],
+      "albumProductionType": "https://schema.org/StudioAlbum",
+      "albumReleaseType": "https://schema.org/AlbumRelease",
+      "recordLabel": {
+        "@id": "https://lackadaisicalperfection.com/about/#subtlety-media"
+      },
+      "track": [
+        {
+          "@type": "MusicRecording",
+          "position": 1,
+          "name": "Anxious Tranquility",
+          "duration": "PT2M38S"
+        },
+        {
+          "@type": "MusicRecording",
+          "position": 2,
+          "name": "Tapestry of Whispers",
+          "duration": "PT2M28S",
+          "datePublished": "2026-10-16"
+        },
+        {
+          "@type": "MusicRecording",
+          "position": 3,
+          "name": "Epic Voyage",
+          "duration": "PT3M28S"
+        },
+        {
+          "@type": "MusicRecording",
+          "position": 4,
+          "name": "Malbec Silence",
+          "duration": "PT7M13S"
+        },
+        {
+          "@type": "MusicRecording",
+          "position": 5,
+          "name": "Mellowitude in Three",
+          "duration": "PT2M14S"
+        },
+        {
+          "@type": "MusicRecording",
+          "position": 6,
+          "name": "Fugacious Eternity",
+          "duration": "PT5M12S"
+        },
+        {
+          "@type": "MusicRecording",
+          "position": 7,
+          "name": "Drops of Hesitation",
+          "duration": "PT3M44S"
+        },
+        {
+          "@type": "MusicRecording",
+          "position": 8,
+          "name": "Absurd Expectation",
+          "duration": "PT1M59S"
+        },
+        {
+          "@type": "MusicRecording",
+          "position": 9,
+          "name": "Lackadaisical Perfection",
+          "duration": "PT2M44S"
+        },
+        {
+          "@type": "MusicRecording",
+          "position": 10,
+          "name": "Fortuitous Discovery",
+          "duration": "PT3M39S"
+        },
+        {
+          "@type": "MusicRecording",
+          "position": 11,
+          "name": "Luminescent Dreams",
+          "duration": "PT4M38S"
+        }
+      ],
+      "publisher": {
+        "@id": "https://lackadaisicalperfection.com/about/#subtlety-media"
+      }
+    }
   ]
- },
- "datePublished": "2027-01-08",
- "numTracks": 11,
- "description": "Eleven new pieces; three singles before the album. Anxious tranquility, a voyage, a tapestry of whispers, luminescent dreams.",
- "genre": [
-  "Piano",
-  "Neoclassical"
- ],
- "albumProductionType": "https://schema.org/StudioAlbum",
- "albumReleaseType": "https://schema.org/AlbumRelease",
- "recordLabel": {
-  "@type": "Organization",
-  "name": "Subtlety Media, LLC"
- },
- "track": [
-  {
-   "@type": "MusicRecording",
-   "position": 1,
-   "name": "Anxious Tranquility",
-   "duration": "PT2M38S"
-  },
-  {
-   "@type": "MusicRecording",
-   "position": 2,
-   "name": "Tapestry of Whispers",
-   "duration": "PT2M28S",
-   "datePublished": "2026-10-16"
-  },
-  {
-   "@type": "MusicRecording",
-   "position": 3,
-   "name": "Epic Voyage",
-   "duration": "PT3M28S"
-  },
-  {
-   "@type": "MusicRecording",
-   "position": 4,
-   "name": "Malbec Silence",
-   "duration": "PT7M13S"
-  },
-  {
-   "@type": "MusicRecording",
-   "position": 5,
-   "name": "Mellowitude in Three",
-   "duration": "PT2M14S"
-  },
-  {
-   "@type": "MusicRecording",
-   "position": 6,
-   "name": "Fugacious Eternity",
-   "duration": "PT5M12S"
-  },
-  {
-   "@type": "MusicRecording",
-   "position": 7,
-   "name": "Drops of Hesitation",
-   "duration": "PT3M44S"
-  },
-  {
-   "@type": "MusicRecording",
-   "position": 8,
-   "name": "Absurd Expectation",
-   "duration": "PT1M59S"
-  },
-  {
-   "@type": "MusicRecording",
-   "position": 9,
-   "name": "Lackadaisical Perfection",
-   "duration": "PT2M44S"
-  },
-  {
-   "@type": "MusicRecording",
-   "position": 10,
-   "name": "Fortuitous Discovery",
-   "duration": "PT3M39S"
-  },
-  {
-   "@type": "MusicRecording",
-   "position": 11,
-   "name": "Luminescent Dreams",
-   "duration": "PT4M38S"
-  }
- ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -657,6 +691,7 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
     © 2026 David Rivera<br>
     <a href="https://music.apple.com/us/artist/david-rivera/1325691064?ls=1" target="_blank" rel="noopener">Apple Music</a> · <a href="https://open.spotify.com/artist/5qoC4NXvjfV3cylbXALzV3" target="_blank" rel="noopener">Spotify</a> · <a href="https://www.facebook.com/pianoincolors" target="_blank" rel="noopener" aria-label="David and his Piano on Facebook">Facebook</a> · <a href="https://www.instagram.com/pianodavid1492/" target="_blank" rel="noopener" aria-label="David Rivera on Instagram">Instagram</a><br>
     Piano-led, with touches of electronica and accompaniment.<br>
+    <a href="https://lackadaisicalperfection.com/about/">About David Rivera</a><br>
     <a href="https://lackadaisicalperfection.com/subscribe/">Subscribe to Melodic Subtlety</a> for new releases and piano scores.
     <div class="contact">
       <div class="contact-label">Contact &amp; Sync Licensing:</div>
