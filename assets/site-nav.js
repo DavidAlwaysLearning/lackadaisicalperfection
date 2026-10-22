@@ -53,6 +53,8 @@
     { href: "/", label: "Album" },
     { href: "/apple/", label: "Apple Music", blank: true },
     { href: "/spotify/", label: "Spotify", blank: true },
+    { href: "https://www.facebook.com/pianoincolors", label: "Facebook", blank: true, aria: "David and his Piano on Facebook" },
+    { href: "https://www.instagram.com/pianodavid1492/", label: "Instagram", blank: true, aria: "David Rivera on Instagram" },
     { href: "/subscribe/", label: "Subscribe" },
     { href: "/scores/", label: "Scores" }
   ];
@@ -106,6 +108,7 @@
     var link = document.createElement("a");
     link.href = page.href;
     link.textContent = page.label;
+    if (page.aria) link.setAttribute("aria-label", page.aria);
     if (page.blank) {
       link.target = "_blank";
       link.rel = "noopener";
