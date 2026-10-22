@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   <meta charset="utf-8">
   <title>Tapestry of Whispers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +18,13 @@
   <meta property="og:url" content="https://lackadaisicalperfection.com/spotify/">
   <meta property="og:image" content="https://lackadaisicalperfection.com/assets/tapestry-of-whispers-single-cover.jpg">
   <meta property="og:image:alt" content="Cover of Tapestry of Whispers by David Rivera">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tapestry of Whispers">
+  <meta name="twitter:description" content="Tapestry of Whispers by David Rivera, American composer. Listen on Spotify or Apple Music.">
+  <meta name="twitter:image" content="https://lackadaisicalperfection.com/assets/tapestry-of-whispers-single-cover.jpg">
+  <meta name="twitter:image:alt" content="Cover of Tapestry of Whispers by David Rivera">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -26,7 +38,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '257777058255900');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
+<noscript><img height="1" width="1" alt="" style="display:none"
 src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
@@ -96,45 +108,7 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
       width: 64px;
       margin: 28px auto;
     }
-    .actions {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin: 0;
-    }
-    .actions a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      min-height: 56px;
-      padding: 16px 20px;
-      border-radius: 999px;
-      font-size: 1.0625rem;
-      font-weight: 500;
-      line-height: 1.2;
-      text-align: center;
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .actions a.spotify {
-      background: var(--glow);
-      color: var(--navy);
-    }
-    .actions a.spotify:hover { filter: brightness(1.08); }
-    .actions a.apple {
-      color: var(--glow);
-      background: transparent;
-      box-shadow: inset 0 0 0 1.5px rgba(224,178,74,0.85);
-    }
-    .actions a.apple:hover { background: rgba(224,178,74,0.08); }
-    .actions a:focus { outline: none; }
-    .actions a:focus-visible {
-      outline: 2px solid var(--glow);
-      outline-offset: 3px;
-    }
+    .listen-actions { margin-top: 8px; }
     /* Phones: site-nav.css sets body > main { padding-top: 96px } so the menu button clears the cover. */
     @media (max-height: 680px) {
       .cover {
@@ -150,21 +124,21 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
       .cover { width: min(360px, 100%); }
     }
     @media (prefers-reduced-motion: reduce) {
-      .actions a { transition: none; }
+      .listen-actions a { transition: none; }
     }
   </style>
 </head>
 <body>
-<main>
-  <img class="cover" src="/assets/tapestry-of-whispers-single-cover.jpg" width="1200" height="1200" alt="Cover of Tapestry of Whispers by David Rivera">
+<a class="skip-link" href="#content">Skip to content</a>
+<main id="content">
+  <div class="listen-actions">
+    <a class="primary" data-tap="SpotifyTap" href="https://open.spotify.com/track/5EEBYde0Cn459esR9Kohjn" target="_blank" rel="noopener">Listen on Spotify</a>
+    <a class="secondary" data-tap="AppleTap" href="https://music.apple.com/us/album/tapestry-of-whispers/6820663406?i=6820663407&amp;ls=1" target="_blank" rel="noopener">Listen on Apple Music</a>
+  </div>
+  <img class="cover" src="/assets/tapestry-of-whispers-single-cover.jpg" width="1200" height="1200" alt="Tapestry of Whispers single cover">
   <h1>Tapestry of Whispers</h1>
   <p class="byline">David Rivera</p>
   <p class="role">American composer</p>
-  <hr class="rule">
-  <div class="actions">
-    <a class="spotify" data-tap="SpotifyTap" href="https://open.spotify.com/track/5EEBYde0Cn459esR9Kohjn" target="_blank" rel="noopener">Listen on Spotify</a>
-    <a class="apple" data-tap="AppleTap" href="https://music.apple.com/us/album/tapestry-of-whispers/6820663406?i=6820663407&amp;ls=1" target="_blank" rel="noopener">Listen on Apple Music</a>
-  </div>
 </main>
 <script>
 /* Phones: site-nav.js strips target="_blank" on music links before this runs,
