@@ -151,7 +151,7 @@
     img.srcset = "/assets/albums/" + album.slug + ".jpg 1x, /assets/albums/" + album.slug + "@2x.jpg 2x";
     img.width = 48;
     img.height = 48;
-    img.alt = "";
+    img.alt = album.title + " album cover";
     img.decoding = "async";
 
     var copy = document.createElement("span");

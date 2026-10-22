@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="4EKQ-llww9PmbGiPJJVVcooL4W-Ja9ddYRLyOtDjN-o" />
@@ -149,6 +154,7 @@
   .cover {
     display: block;
     width: min(420px, 100%);
+    height: auto;
     margin: 0 auto 36px;
     border-radius: 4px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.45);
@@ -267,39 +273,15 @@
     font-size: 0.85rem;
     color: var(--mute);
   }
-  .listen-cta {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin: 4px 0 14px;
-  }
-  .listen-cta a.primary {
-    display: inline-block;
-    padding: 14px 30px;
-    border-radius: 999px;
-    background: var(--glow);
-    color: #1c1410;
-    font-weight: 600;
-    font-size: 1.05rem;
-    text-decoration: none;
-    letter-spacing: 0.02em;
-  }
-  .listen-cta a.primary:hover { filter: brightness(1.08); }
-  .listen-cta a.secondary {
-    color: var(--glow);
+  .listen-also {
+    margin: 0 0 14px;
     font-size: 0.9rem;
+  }
+  .listen-also a {
+    color: var(--glow);
     text-decoration: none;
   }
-  .listen-cta a.secondary:hover { text-decoration: underline; }
-  .listen-cta .secondary-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 6px 10px;
-  }
-  .listen-cta .secondary-row .sep { color: var(--mute); }
+  .listen-also a:hover { text-decoration: underline; }
   .score {
     max-width: 34rem;
     margin: 28px auto 40px;
@@ -557,7 +539,7 @@ fbq('init', '257777058255900');
 fbq('track', 'PageView');
 fbq('track', 'ViewContent');
 </script>
-<noscript><img height="1" width="1" style="display:none"
+<noscript><img height="1" width="1" alt="" style="display:none"
 src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
@@ -565,8 +547,9 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
 <script src="/assets/site-nav.js" defer></script>
 </head>
 <body>
-<main>
-  <img class="cover" src="assets/cover.jpg" alt="Cover of Lackadaisical Perfection: a cubist painting with piano keys and gold type">
+<a class="skip-link" href="#content">Skip to content</a>
+<main id="content">
+  <img class="cover" src="assets/cover.jpg" width="1400" height="1400" alt="Lackadaisical Perfection album cover">
   <p class="byline">David Rivera</p>
   <h1>Lackadaisical Perfection</h1>
   <p class="year">Album · January 8, 2027 · piano</p>
@@ -592,10 +575,11 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
       </video>
       <figcaption>First single · Out now</figcaption>
     </figure>
-    <div class="listen-cta">
-      <a class="primary" href="/spotify/" target="_blank" rel="noopener">Listen to Tapestry of Whispers on Spotify</a>
-      <span class="secondary-row"><a class="secondary" href="/apple/" target="_blank" rel="noopener">Apple Music</a><span class="sep" aria-hidden="true">·</span><a class="secondary" href="/youtube-music/" target="_blank" rel="noopener">YouTube Music</a></span>
+    <div class="listen-actions">
+      <a class="primary" href="/spotify/" target="_blank" rel="noopener">Listen on Spotify</a>
+      <a class="secondary" href="/apple/" target="_blank" rel="noopener">Listen on Apple Music</a>
     </div>
+    <p class="listen-also"><a href="/youtube-music/" target="_blank" rel="noopener">YouTube Music</a></p>
     <p class="listen-label">Sample · Tapestry of Whispers</p>
   </div>
 
@@ -618,7 +602,7 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
   <section class="score">
     <h2>The Complete Score</h2>
     <p class="score-lede">Every note of <em>Tapestry of Whispers</em>, first bar to final chord. The single is out now. Listen, then learn it bar by bar.</p>
-    <img src="assets/tapestry-of-whispers-score-page-1.png" width="1445" height="1870" alt="Tapestry of Whispers — Contemporary Minimalist Piano Sheet Music Score (PDF) by David Rivera">
+    <img src="assets/tapestry-of-whispers-score-page-1.png" width="1445" height="1870" alt="First page of Tapestry of Whispers, piano sheet music by David Rivera">
     <p><a href="assets/tapestry-of-whispers-score.pdf?v=locked" download="Tapestry-of-Whispers-David-Rivera-piano-score.pdf" data-goatcounter-click="download-tapestry-of-whispers-score" data-goatcounter-title="Tapestry of Whispers - piano score PDF" data-goatcounter-referrer="/">Download the complete score (PDF, 3 pages)</a></p>
     <p class="score-note">Solo Piano · Intermediate · Engraved PDF</p>
     <p><a href="assets/tapestry-of-whispers-chords.pdf?v=chords" download="Tapestry-of-Whispers-David-Rivera-chord-edition.pdf" data-goatcounter-click="download-tapestry-of-whispers-chords" data-goatcounter-title="Tapestry of Whispers - chord edition PDF" data-goatcounter-referrer="/">Chord edition (full score with chord symbols, PDF, 3 pages)</a></p>
