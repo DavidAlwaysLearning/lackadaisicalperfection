@@ -56,7 +56,8 @@
     { href: "https://www.facebook.com/pianoincolors", label: "Facebook", blank: true, aria: "David and his Piano on Facebook" },
     { href: "https://www.instagram.com/pianodavid1492/", label: "Instagram", blank: true, aria: "David Rivera on Instagram" },
     { href: "/subscribe/", label: "Subscribe" },
-    { href: "/scores/", label: "Scores" }
+    { href: "/scores/", label: "Scores" },
+    { href: "/about/", label: "About" }
   ];
 
   function normalize(path) {
