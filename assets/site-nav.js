@@ -5,7 +5,7 @@
   var stores = ["open.spotify.com", "music.apple.com", "music.youtube.com"];
   var redirects = ["/spotify/", "/apple/", "/youtube-music/"];
   /* David's YouTube channel (not single videos): opens the app on phones like the stores. */
-  var channels = ["/channel/ucdqz1e9ur4phyneylnmjdg", "/@relaxinginstrumentalvideos"];
+  var channels = ["/channel/ucdqz1e9ur4phyneylnmjdg", "/@melodicsubtlety", "/@relaxinginstrumentalvideos"];
 
   function isChannel(url) {
     var host = url.hostname.toLowerCase().replace(/^(www|m)\./, "");
