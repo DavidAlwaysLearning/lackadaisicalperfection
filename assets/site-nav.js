@@ -4,6 +4,18 @@
 (function () {
   var stores = ["open.spotify.com", "music.apple.com", "music.youtube.com"];
   var redirects = ["/spotify/", "/apple/", "/youtube-music/"];
+  /* David's YouTube channel (not single videos): opens the app on phones like the stores. */
+  var channels = ["/channel/ucdqz1e9ur4phyneylnmjdg", "/@relaxinginstrumentalvideos"];
+
+  function isChannel(url) {
+    var host = url.hostname.toLowerCase().replace(/^(www|m)\./, "");
+    if (host !== "youtube.com") return false;
+    var path = url.pathname.toLowerCase().replace(/_/g, "").replace(/\/+$/, "");
+    for (var i = 0; i < channels.length; i++) {
+      if (path === channels[i] || path.indexOf(channels[i] + "/") === 0) return true;
+    }
+    return false;
+  }
 
   function isPhone() {
     var ua = navigator.userAgent || "";
@@ -19,6 +31,7 @@
     try { url = new URL(raw, location.href); } catch (err) { return false; }
     var host = url.hostname.toLowerCase();
     if (stores.indexOf(host) !== -1) return true;
+    if (isChannel(url)) return true;
     if (url.origin !== location.origin) return false;
     var path = url.pathname.replace(/index\.html$/, "");
     if (path.charAt(path.length - 1) !== "/") path += "/";
@@ -45,6 +58,21 @@
   /* After the menu code below has built its links (and on sites where it re-adds new-window targets). */
   setTimeout(sweep, 0);
   window.addEventListener("load", sweep);
+
+  /* YouTube channel taps: Meta Pixel "YouTubeTap" (where the pixel is installed) and GoatCounter event "youtube". */
+  document.addEventListener("click", function (event) {
+    var a = event.target && event.target.closest ? event.target.closest("a[href]") : null;
+    if (!a) return;
+    var url;
+    try { url = new URL(a.getAttribute("href"), location.href); } catch (err) { return; }
+    if (!isChannel(url)) return;
+    try { if (typeof window.fbq === "function") window.fbq("trackCustom", "YouTubeTap"); } catch (err) {}
+    try {
+      if (window.goatcounter && typeof window.goatcounter.count === "function") {
+        window.goatcounter.count({ path: "youtube", title: "youtube", event: true });
+      }
+    } catch (err) {}
+  }, true);
 })();
 
 /* Site menu. Add a destination by appending one entry. The open menu lists every other destination. The confirmation page is not a destination. */
