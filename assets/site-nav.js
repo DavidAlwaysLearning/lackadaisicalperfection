@@ -73,6 +73,32 @@
       }
     } catch (err) {}
   }, true);
+
+  /* Listen on Spotify: Meta Lead (for ad optimization) plus custom SpotifyTap.
+     Capture phase, and this listener never calls preventDefault, so the tap still
+     opens Spotify or the app immediately. /spotify and /apple already send
+     SpotifyTap from their own data-tap handler on an ordinary click; only Lead
+     is added for that click so the custom event is not counted twice. */
+  document.addEventListener("click", function (event) {
+    var a = event.target && event.target.closest ? event.target.closest("a[href]") : null;
+    if (!a) return;
+    var text = (a.textContent || "").replace(/\s+/g, " ").trim();
+    if (text !== "Listen on Spotify" && a.getAttribute("data-tap") !== "SpotifyTap") return;
+    if (typeof window.fbq !== "function") return;
+
+    var ordinary = event.button === 0 &&
+      !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey &&
+      !event.defaultPrevented;
+    var pageAlreadySendsSpotifyTap = a.getAttribute("data-tap") === "SpotifyTap" && ordinary && !!a.href;
+
+    try {
+      window.fbq("track", "Lead", { content_name: "Spotify tap" });
+    } catch (err) {}
+    if (pageAlreadySendsSpotifyTap) return;
+    try {
+      window.fbq("trackCustom", "SpotifyTap");
+    } catch (err) {}
+  }, true);
 })();
 
 /* Site menu. Add a destination by appending one entry. The open menu lists every other destination. The confirmation page is not a destination. */
