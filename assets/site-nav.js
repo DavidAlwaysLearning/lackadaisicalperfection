@@ -65,7 +65,8 @@
     if (!a) return;
     var url;
     try { url = new URL(a.getAttribute("href"), location.href); } catch (err) { return; }
-    if (!isChannel(url)) return;
+    /* Channel URLs, and the song-page subscribe button (data-lp-event="youtube"). One tap, one count. */
+    if (!isChannel(url) && a.getAttribute("data-lp-event") !== "youtube") return;
     try { if (typeof window.fbq === "function") window.fbq("trackCustom", "YouTubeTap"); } catch (err) {}
     try {
       if (window.goatcounter && typeof window.goatcounter.count === "function") {
@@ -83,7 +84,8 @@
     var a = event.target && event.target.closest ? event.target.closest("a[href]") : null;
     if (!a) return;
     var text = (a.textContent || "").replace(/\s+/g, " ").trim();
-    if (text !== "Listen on Spotify" && a.getAttribute("data-tap") !== "SpotifyTap") return;
+    /* "Listen on Spotify", data-tap="SpotifyTap", or data-lp-event="spotify" on the song page. */
+    if (text !== "Listen on Spotify" && a.getAttribute("data-tap") !== "SpotifyTap" && a.getAttribute("data-lp-event") !== "spotify") return;
     if (typeof window.fbq !== "function") return;
 
     var ordinary = event.button === 0 &&
@@ -97,6 +99,28 @@
     if (pageAlreadySendsSpotifyTap) return;
     try {
       window.fbq("trackCustom", "SpotifyTap");
+    } catch (err) {}
+  }, true);
+
+  /* Score PDFs keep the existing GoatCounter names via data-goatcounter-click,
+     which count.js records (download-tapestry-of-whispers-score and
+     download-tapestry-of-whispers-chords). data-lp-event="score" marks those
+     links. If a score link is marked but has no data-goatcounter-click, count
+     it here once so the tap is not counted twice. */
+  document.addEventListener("click", function (event) {
+    var a = event.target && event.target.closest ? event.target.closest("a[href]") : null;
+    if (!a || a.getAttribute("data-lp-event") !== "score") return;
+    if (a.hasAttribute("data-goatcounter-click")) return;
+    var path = a.getAttribute("data-score-event");
+    if (!path) return;
+    try {
+      if (window.goatcounter && typeof window.goatcounter.count === "function") {
+        window.goatcounter.count({
+          path: path,
+          title: a.getAttribute("data-score-title") || path,
+          event: true
+        });
+      }
     } catch (err) {}
   }, true);
 })();

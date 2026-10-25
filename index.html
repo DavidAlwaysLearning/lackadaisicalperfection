@@ -97,7 +97,8 @@
           "position": 2,
           "name": "Tapestry of Whispers",
           "duration": "PT2M28S",
-          "datePublished": "2026-10-16"
+          "datePublished": "2026-10-16",
+          "url": "https://lackadaisicalperfection.com/tapestry-of-whispers/"
         },
         {
           "@type": "MusicRecording",
@@ -291,93 +292,63 @@
   .catalog a:hover { text-decoration: underline; }
   .catalog .desc { color: var(--mute); }
 
-  .listen {
-    max-width: 420px;
-    margin: 0 auto 36px;
-    text-align: center;
-    color-scheme: dark;
+  #little-film,
+  .single-card {
+    scroll-margin-top: 96px;
   }
-  .listen-label {
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-size: 0.72rem;
-    color: var(--mute);
-    margin: 0 0 10px;
+  .single-card {
+    max-width: 38rem;
+    margin: 0 auto;
   }
-  .listen-note {
-    margin: 8px 0 0;
-    font-size: 0.85rem;
-    color: var(--mute);
-  }
-  .listen-also {
-    margin: 0 0 14px;
-    font-size: 0.9rem;
-  }
-  .listen-also a {
-    color: var(--glow);
+  .single-card a {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: inherit;
     text-decoration: none;
   }
-  .listen-also a:hover { text-decoration: underline; }
-  .listen-player { width:100%; max-width:480px; margin:18px auto 4px; }
-  .listen-player iframe { display:block; width:100%; height:80px; border:0; border-radius:12px; }
-  .score {
-    max-width: 34rem;
-    margin: 28px auto 40px;
-    text-align: center;
+  .single-card a:hover { border-color: rgba(224, 178, 74, 0.55); }
+  .single-card a:focus { outline: none; }
+  .single-card a:focus-visible {
+    outline: 2px solid var(--glow);
+    outline-offset: 3px;
   }
-  .score h2 {
+  .single-card a > span { min-width: 0; }
+  .single-card img {
+    width: 96px;
+    height: 96px;
+    flex: none;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+  .single-card h2 {
     font-family: "Cormorant Garamond", serif;
     font-weight: 400;
     font-size: 1.45rem;
-    margin: 0 0 16px;
+    line-height: 1.2;
+    margin: 0 0 4px;
   }
-  .score img {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
-    background: #f7f4ee;
-    border-radius: 2px;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
-  }
-  .score p {
-    margin: 14px 0 0;
+  .single-card p {
+    margin: 0;
+    color: var(--mute);
     font-size: 0.95rem;
   }
-  .score p.score-lede {
-    margin: 0 0 18px;
-    color: var(--mute);
-  }
-  .score a {
+  .single-card .more {
+    margin-top: 6px;
     color: var(--glow);
-    text-decoration: none;
-  }
-  .score p.score-note {
-    margin: 4px 0 0;
-    font-size: 0.85rem;
-    color: var(--mute);
-  }
-  .score a:hover {
     text-decoration: underline;
+    text-underline-offset: 0.18em;
   }
-  .single {
-    margin: 0 0 20px;
+  @media (max-width: 520px) {
+    .single-card a { gap: 14px; padding: 12px; }
+    .single-card img { width: 76px; height: 76px; }
   }
-  .single video {
-    display: block;
-    aspect-ratio: 1 / 1;
-    width: min(360px, 100%);
-    height: auto;
-    margin: 0 auto;
-    border-radius: 4px;
-    background: #1c1410;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
-  }
-  .single figcaption {
-    margin: 10px 0 0;
-    font-size: 0.85rem;
-    color: var(--mute);
-  }
+  .tracks a { color: inherit; text-decoration: none; }
+  .tracks a:hover { color: var(--glow); }
 
   .lookout {
     font-family: "Cormorant Garamond", serif;
@@ -433,135 +404,6 @@
     max-width: 28rem;
   }
 
-  .woven {
-    max-width: 38rem;
-    margin: 0 auto 12px;
-    text-align: center;
-  }
-  .woven h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 1.22rem;
-    letter-spacing: 0.01em;
-    margin: 0 0 14px;
-    color: var(--ink);
-  }
-  .woven figure { margin: 0; }
-  .woven-frame {
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-    background: #163044;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-  }
-  .woven-frame::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    box-shadow: inset 0 0 0 1px rgba(224, 178, 74, 0.28);
-    pointer-events: none;
-  }
-  .woven-facade {
-    position: relative;
-    display: block;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background: #163044;
-    aspect-ratio: 16 / 9;
-    cursor: pointer;
-    font: inherit;
-    color: inherit;
-    appearance: none;
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .woven-facade:focus { outline: none; }
-  .woven-frame:has(.woven-facade:focus-visible) {
-    outline: 2px solid var(--glow);
-    outline-offset: 4px;
-  }
-  .woven-facade img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .woven-play {
-    position: absolute;
-    left: 50%;
-    top: 46%;
-    width: 64px;
-    height: 64px;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: rgba(28, 20, 16, 0.38);
-    border: 1px solid rgba(244, 234, 214, 0.72);
-    box-shadow: 0 10px 28px rgba(14, 10, 8, 0.32);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    pointer-events: none;
-  }
-  .woven-play::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-42%, -50%);
-    border-style: solid;
-    border-width: 8px 0 8px 13px;
-    border-color: transparent transparent transparent var(--ink);
-  }
-  .woven-facade:hover .woven-play,
-  .woven-facade:focus-visible .woven-play {
-    background: rgba(28, 20, 16, 0.52);
-    border-color: rgba(224, 178, 74, 0.92);
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .woven-play {
-      transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease;
-    }
-    .woven-facade:hover .woven-play,
-    .woven-facade:focus-visible .woven-play {
-      transform: translate(-50%, -50%) scale(1.04);
-    }
-  }
-  .woven-embed {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    height: auto;
-    border: 0;
-    background: #163044;
-  }
-  .woven figcaption {
-    margin: 16px auto 0;
-    max-width: 34rem;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 1.18rem;
-    line-height: 1.5;
-    color: var(--ink);
-  }
-  .woven-reply {
-    display: block;
-    margin-top: 8px;
-    font-family: "Source Sans 3", sans-serif;
-    font-size: 0.82rem;
-    letter-spacing: 0.01em;
-    color: var(--mute);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-decoration-color: rgba(196, 176, 137, 0.5);
-    text-underline-offset: 0.22em;
-  }
-  .woven-reply:hover {
-    color: var(--glow);
-    text-decoration-color: rgba(224, 178, 74, 0.75);
-  }
-
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -602,54 +444,18 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
 
   <hr class="rule">
 
-  <div class="from-david">
-    <p>The first single, <em>Tapestry of Whispers</em>, is out now.</p>
+  <div id="little-film">
+    <section class="single-card" id="tapestry" aria-labelledby="tapestry-title">
+      <a href="/tapestry-of-whispers/">
+        <img src="assets/covers/tapestry-of-whispers-96.jpg" width="96" height="96" alt="">
+        <span>
+          <h2 id="tapestry-title">Tapestry of Whispers</h2>
+          <p>The first single, out now.</p>
+          <p class="more">More about Tapestry</p>
+        </span>
+      </a>
+    </section>
   </div>
-
-  <div class="listen">
-    <figure class="single">
-      <video controls playsinline preload="metadata" poster="assets/tapestry-of-whispers-single-cover.jpg" width="1424" height="1424" aria-label="Animated sample of Tapestry of Whispers">
-        <source src="assets/tapestry-of-whispers-sample.mp4" type="video/mp4">
-      </video>
-      <figcaption>First single · Out now</figcaption>
-    </figure>
-    <div class="listen-actions">
-      <a class="primary" href="/spotify/" target="_blank" rel="noopener">Listen on Spotify</a>
-      <a class="secondary" href="/apple/" target="_blank" rel="noopener">Listen on Apple Music</a>
-    </div>
-    <div class="listen-player">
-      <iframe title="Play Tapestry of Whispers on Spotify" src="https://open.spotify.com/embed/track/5EEBYde0Cn459esR9Kohjn?utm_source=generator&amp;theme=0" height="80" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-    </div>
-    <p class="listen-also"><a href="https://www.youtube.com/channel/UCDqZ1e9Ur4PHynEylN_mJDg" target="_blank" rel="noopener">YouTube</a></p>
-    <p class="listen-label">Sample · Tapestry of Whispers</p>
-  </div>
-
-  <section class="woven" id="little-film" aria-labelledby="woven-title">
-    <h2 id="woven-title">The music, with a little fairy tale</h2>
-    <figure>
-      <div class="woven-frame">
-        <button type="button" class="woven-facade" data-youtube-id="qoK6yj5SjIA" aria-label="Play a little fairy tale for Tapestry of Whispers">
-          <img src="https://i.ytimg.com/vi/qoK6yj5SjIA/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer">
-          <span class="woven-play" aria-hidden="true"></span>
-        </button>
-      </div>
-      <figcaption>
-        Tapestry of Whispers, a piano piece by David Rivera. To share it, he made a little AI-animated fairy tale to go with the music.
-        <a class="woven-reply" href="https://www.youtube.com/watch?v=qoK6yj5SjIA" target="_blank" rel="noopener">Share your thoughts on YouTube</a>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="score">
-    <h2>The Complete Score</h2>
-    <p class="score-lede">Every note of <em>Tapestry of Whispers</em>, first bar to final chord. The single is out now. Listen, then learn it bar by bar.</p>
-    <img src="assets/tapestry-of-whispers-score-page-1.png" width="1445" height="1870" alt="First page of Tapestry of Whispers, piano sheet music by David Rivera">
-    <p><a href="assets/tapestry-of-whispers-score.pdf?v=locked" download="Tapestry-of-Whispers-David-Rivera-piano-score.pdf" data-goatcounter-click="download-tapestry-of-whispers-score" data-goatcounter-title="Tapestry of Whispers - piano score PDF" data-goatcounter-referrer="/">Download the complete score (PDF, 3 pages)</a></p>
-    <p class="score-note">Solo Piano · Intermediate · Engraved PDF</p>
-    <p><a href="assets/tapestry-of-whispers-chords.pdf?v=chords" download="Tapestry-of-Whispers-David-Rivera-chord-edition.pdf" data-goatcounter-click="download-tapestry-of-whispers-chords" data-goatcounter-title="Tapestry of Whispers - chord edition PDF" data-goatcounter-referrer="/">Chord edition (full score with chord symbols, PDF, 3 pages)</a></p>
-    <p class="score-note">The complete score with chord symbols above it, for players who think in chords.</p>
-    <p><a href="/scores/">All free scores and chord editions</a></p>
-  </section>
 
   <hr class="rule">
 
@@ -667,7 +473,7 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
   <p class="label" id="pieces">The pieces</p>
   <ol class="tracks">
     <li><span class="n">1</span><span class="t">Anxious Tranquility<span class="line">Close your eyes and this piece will transport you; twice, from a slow E minor dream into a D minor scape. Continuous arpeggios, a bit restless, and yet, even. (2:38)</span></span></li>
-    <li id="tapestry"><span class="n">2</span><span class="t">Tapestry of Whispers<span class="line">Delicate notes are whispers that form our thoughts. Music weaves who we become. E minor, 115. (2:28)</span></span></li>
+    <li><span class="n">2</span><span class="t"><a href="/tapestry-of-whispers/">Tapestry of Whispers</a><span class="line">Delicate notes are whispers that form our thoughts. Music weaves who we become. E minor, 115. (2:28)</span></span></li>
     <li><span class="n">3</span><span class="t">Epic Voyage<span class="line">The voyage is epic, not tranquil, maybe a bit anxious, as all adventures are. It is a C minor piece traveling at 130 bpm. (3:28)</span></span></li>
     <li><span class="n">4</span><span class="t">Malbec Silence<span class="line">Malbec Silence opens with cascading scales that settle into a tranquil, arpeggiated prelude before an Andalusian theme emerges in Phrygian colors. Over seven unhurried minutes, in free tempo yet always melodic, the piano asks and answers, suspends and resolves, with the felt and pedal breathing through the quiet moments, until it closes on grand, sweeping chords. Spanish piano with a hint of Moorish mystery. (7:13)</span></span></li>
     <li><span class="n">5</span><span class="t">Mellowitude in Three<span class="line">When alone you may crave a quiet mellowitude in three. Playful, simple, clean. Clear thoughts, reminiscing solitude. C major. The tempo moves ever so slightly between 173 and 181. (2:14)</span></span></li>
@@ -707,26 +513,6 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
     </div>
   </footer>
 </main>
-<script>
-(function () {
-  var button = document.querySelector(".woven-facade");
-  if (!button) return;
-  button.addEventListener("click", function () {
-    var id = button.getAttribute("data-youtube-id");
-    if (!id || !/^[A-Za-z0-9_-]{11}$/.test(id)) return;
-    var frame = document.createElement("iframe");
-    frame.className = "woven-embed";
-    frame.title = "Tapestry of Whispers, a little fairy tale";
-    frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&playsinline=1&rel=0";
-    frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-    frame.allowFullscreen = true;
-    frame.referrerPolicy = "strict-origin-when-cross-origin";
-    frame.tabIndex = -1;
-    button.replaceWith(frame);
-    frame.focus({ preventScroll: true });
-  });
-})();
-</script>
 <!-- GoatCounter: privacy-friendly page view + score-download counts (no cookies). -->
 <script>window.goatcounter = {path: function(p) { return location.host + p }}</script>
 <script data-goatcounter="https://subtletymedia.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
