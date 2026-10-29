@@ -113,3 +113,9 @@ figure.cover img {
   font-size: 0.92rem;
 }
 .back { margin-top: 1.75rem; }
+footer {
+  text-align: center;
+  color: var(--mute);
+  font-size: 0.85rem;
+  margin-top: 48px;
+}
