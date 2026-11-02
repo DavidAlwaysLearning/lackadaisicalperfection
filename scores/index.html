@@ -36,6 +36,8 @@
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
+  html { scroll-padding-top: 108px; }
+  .piece, .faq { scroll-margin-top: 108px; }
   body {
     background: radial-gradient(ellipse at 50% 0%, #5a3a28 0%, #1c1410 55%, #0e0a08 100%);
     color: var(--ink);
@@ -72,6 +74,52 @@
     color: var(--mute);
     margin: 0 auto 8px;
     max-width: 28rem;
+  }
+  .loom-banner {
+    margin: 0 auto 1.6rem;
+  }
+  .loom-banner a {
+    position: relative;
+    display: block;
+    border-radius: 3px;
+    color: inherit;
+  }
+  .loom-banner a:focus { outline: none; }
+  .loom-banner a:focus-visible {
+    outline: 2px solid var(--glow);
+    outline-offset: 4px;
+  }
+  .loom-banner img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.38);
+  }
+  .loom-play {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(28, 20, 16, 0.45);
+    border: 1px solid rgba(224, 178, 74, 0.7);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+    pointer-events: none;
+  }
+  .loom-play::after {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 12px;
+    border-style: solid;
+    border-width: 8px 0 8px 12px;
+    border-color: transparent transparent transparent var(--glow);
+  }
+  .loom-banner a:hover .loom-play {
+    background: rgba(28, 20, 16, 0.62);
+    border-color: var(--glow);
   }
   .rule {
     border: 0;
@@ -225,6 +273,17 @@
   .faq h2 { font-family: "Cormorant Garamond", serif; font-weight: 400; font-size: 1.9rem; text-align: center; margin: 0 0 1.5rem; }
   .faq h3 { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 1.25rem; margin: 1.6rem 0 0.3rem; color: var(--ink); }
   .faq p { margin: 0; color: var(--ink); }
+  .faq a {
+    color: var(--glow);
+    text-underline-offset: 0.18em;
+  }
+  .faq a:hover { color: var(--ink); }
+  .faq a:focus { outline: none; }
+  .faq a:focus-visible {
+    outline: 2px solid var(--glow);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 </style>
 <script type="application/ld+json">
@@ -249,7 +308,7 @@
    "@id": "https://lackadaisicalperfection.com/scores/#page",
    "url": "https://lackadaisicalperfection.com/scores/",
    "name": "Free Piano Sheet Music with Chords | David Rivera Scores",
-   "description": "Free, printable neo-classical piano sheet music by David Rivera, each piece as a piano solo and a chord edition.",
+   "description": "Free, printable neo-classical piano sheet music by David Rivera. Most pieces are a piano solo and a chord edition.",
    "inLanguage": "en",
    "author": {
     "@id": "https://lackadaisicalperfection.com/#david-rivera"
@@ -532,7 +591,7 @@
     "url": "https://open.spotify.com/track/1lBCRmvVNIjltDzYi80JSI",
     "inAlbum": {
      "@type": "MusicAlbum",
-     "name": "Melodic Subtlety – Solo Piano",
+     "name": "Melodic Subtlety",
      "byArtist": {
       "@id": "https://lackadaisicalperfection.com/#david-rivera"
      }
@@ -604,7 +663,7 @@
     "url": "https://open.spotify.com/track/63f3kwienzLlNG3Qzx2TIz",
     "inAlbum": {
      "@type": "MusicAlbum",
-     "name": "Melodic Subtlety – Solo Piano",
+     "name": "Melodic Subtlety",
      "byArtist": {
       "@id": "https://lackadaisicalperfection.com/#david-rivera"
      }
@@ -763,7 +822,7 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
   <h1>Free Piano Sheet Music with Chords</h1>
   <p class="lede">Original neo-classical piano, engraved and free to download.</p>
   <hr class="rule">
-  <p class="intro">These are original piano pieces by David Rivera, engraved and free to download as printable PDFs. They’re neo-classical: lyrical melodies over open, flowing harmony. Every piece comes as a piano solo and a chord edition. The piano solo gives you every note. The chord edition adds chord symbols above the staff, so you can read it note for note, simplify the left hand, or improvise from the changes. Each piece lists its key, level, tempo and length, and links to the recording on Spotify, so you can hear it before you learn it. Play them on a rainy afternoon, late at night, or whenever the piano is calling. No sign-up, no cost. New scores arrive with each release.</p>
+  <p class="intro">These are original piano pieces by David Rivera, engraved and free to download as printable PDFs. They’re neo-classical: lyrical melodies over open, flowing harmony. Most pieces come as a piano solo and a chord edition. The piano solo gives you every note. The chord edition adds chord symbols above the staff, so you can read it note for note, simplify the left hand, or improvise from the changes. Each piece lists its key, level, tempo and length, and links to the recording on Spotify, so you can hear it before you learn it. Play them on a rainy afternoon, late at night, or whenever the piano is calling. No sign-up, no cost. New scores arrive with each release.</p>
   <p class="fans">For fans of Ludovico Einaudi, Yiruma and Joep Beving.</p>
   <p class="terms">Free for personal use, teaching and performance. Please don&#x27;t resell or redistribute.</p>
   <hr class="rule">
@@ -777,9 +836,15 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
   <h2 class="album-name">Lackadaisical Perfection</h2>
   <ul class="library">
     <li class="piece" id="tapestry-of-whispers">
-      <div class="title"><a class="cover" href="/spotify/" target="_blank" rel="noopener" aria-label="Listen to Tapestry of Whispers on Spotify"><img src="/assets/covers/tapestry-of-whispers-96.jpg" width="40" height="40" alt="Tapestry of Whispers single cover" loading="lazy"></a><h3>Tapestry of Whispers</h3></div>
+      <div class="title"><a class="cover" href="/spotify/" target="_blank" rel="noopener" aria-label="Listen to Tapestry of Whispers on Spotify"><img src="/assets/covers/tapestry-of-whispers-96.jpg" srcset="/assets/covers/tapestry-of-whispers-96.jpg 1x, /assets/covers/tapestry-of-whispers-192.jpg 2x" width="40" height="40" alt="Tapestry of Whispers single cover"></a><h3>Tapestry of Whispers</h3></div>
       <p class="spec">David Rivera · Piano · Early intermediate (approx. RCM 3–4 / ABRSM 2–3) · E minor · 115 BPM · 4/4 · 2:28</p>
       <p class="blurb">Tapestry of Whispers is a sweet, playful neo-classical piece in E minor with a light dance feel, a melody stitched over a quick, gentle pulse. Early intermediate, three pages, easy to learn by sections.</p>
+      <figure class="loom-banner">
+        <a href="https://www.youtube.com/watch?v=tlDOleZKO0g" target="_blank" rel="noopener" title="Watch Magical Tapestry Score on YouTube">
+          <img src="/assets/magical-tapestry-score.jpg" width="1280" height="720" alt="Tapestry of Whispers score on a stitched scroll in a loom room">
+          <span class="loom-play" aria-hidden="true"></span>
+        </a>
+      </figure>
       <ul class="editions">
         <li class="score">
           <img src="/assets/tapestry-of-whispers-score-page-1.png" width="1275" height="1650" alt="First page of Tapestry of Whispers, piano sheet music by David Rivera">
@@ -824,7 +889,7 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
   </ul>
   </section>
   <section class="album">
-  <h2 class="album-name">Melodic Subtlety – Solo Piano</h2>
+  <h2 class="album-name">Melodic Subtlety</h2>
   <ul class="library">
     <li class="piece" id="obsession">
       <div class="title"><a class="cover" href="https://open.spotify.com/track/1lBCRmvVNIjltDzYi80JSI" target="_blank" rel="noopener" aria-label="Listen to Obsession on Spotify"><img src="/assets/covers/melodic-subtlety-96.jpg" width="40" height="40" alt="Melodic Subtlety album cover" loading="lazy"></a><h3>Obsession</h3></div>
