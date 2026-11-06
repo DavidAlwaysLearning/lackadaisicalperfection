@@ -2,8 +2,8 @@
    Computers keep opening them in a new window. Runs on its own, before the menu code, and also catches
    links the menu adds later (checked again at tap time). */
 (function () {
-  var stores = ["open.spotify.com", "music.apple.com", "music.youtube.com"];
-  var redirects = ["/spotify/", "/apple/", "/youtube-music/"];
+  var stores = ["open.spotify.com", "music.apple.com", "music.amazon.com", "music.youtube.com"];
+  var redirects = ["/spotify/", "/apple/", "/amazon/", "/youtube-music/"];
   /* David's YouTube channel (not single videos): opens the app on phones like the stores. */
   var channels = ["/channel/ucdqz1e9ur4phyneylnmjdg", "/@melodicsubtlety", "/@relaxinginstrumentalvideos"];
 
@@ -131,6 +131,7 @@
     { href: "/", label: "Album" },
     { href: "/apple/", label: "Apple Music", blank: true },
     { href: "/spotify/", label: "Spotify", blank: true },
+    { href: "/amazon/", label: "Amazon Music", blank: true },
     { href: "https://www.facebook.com/pianoincolors", label: "Facebook", blank: true, aria: "David and his Piano on Facebook" },
     { href: "https://www.instagram.com/pianodavid1492/", label: "Instagram", blank: true, aria: "David Rivera on Instagram" },
     { href: "/subscribe/", label: "Subscribe" },
