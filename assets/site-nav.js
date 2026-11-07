@@ -125,45 +125,18 @@
   }, true);
 })();
 
-/* Site menu. Add a destination by appending one entry. The open menu lists every other destination. The confirmation page is not a destination. */
+/* Site menu. Same destinations on every page: About, Scores, Subscribe, then the eight albums.
+   Subscribe confirmation is not a destination. The only page-specific mark is "You're here" on this album. */
 (function () {
   var pages = [
-    { href: "/", label: "Album" },
-    { href: "/apple/", label: "Apple Music", blank: true },
-    { href: "/spotify/", label: "Spotify", blank: true },
-    { href: "/amazon/", label: "Amazon Music", blank: true },
-    { href: "https://www.facebook.com/pianoincolors", label: "Facebook", blank: true, aria: "David and his Piano on Facebook" },
-    { href: "https://www.instagram.com/pianodavid1492/", label: "Instagram", blank: true, aria: "David Rivera on Instagram" },
-    { href: "/subscribe/", label: "Subscribe" },
+    { href: "/about/", label: "About" },
     { href: "/scores/", label: "Scores" },
-    { href: "/about/", label: "About" }
+    { href: "/subscribe/", label: "Subscribe" }
   ];
-
-  function normalize(path) {
-    var p = path || "/";
-    var base = location.origin && location.origin !== "null"
-      ? location.origin
-      : "https://lackadaisicalperfection.com";
-    try {
-      p = new URL(p, base).pathname;
-    } catch (err) {
-      p = "/";
-    }
-    if (p === "/index.html" || p.slice(-11) === "/index.html") {
-      p = p.slice(0, -10);
-    }
-    if (p.charAt(p.length - 1) !== "/") p += "/";
-    return p;
-  }
 
   function reducedMotion() {
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
-
-  var here = normalize(location.pathname);
-  var links = pages.filter(function (page) {
-    return normalize(page.href) !== here;
-  });
 
   var button = document.createElement("button");
   button.type = "button";
@@ -183,7 +156,7 @@
 
   var list = document.createElement("ul");
   list.setAttribute("role", "list");
-  links.forEach(function (page) {
+  pages.forEach(function (page) {
     var item = document.createElement("li");
     var link = document.createElement("a");
     link.href = page.href;
