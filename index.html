@@ -228,12 +228,6 @@
   }
   .from-david p { margin: 0 0 1em; }
   .from-david p:last-child { margin-bottom: 0; }
-  .from-david .lookout {
-    font-size: 1.45rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    margin-top: 0.35em;
-  }
   .rule {
     border: 0;
     border-top: 1px solid var(--line);
@@ -298,11 +292,15 @@
   .single-card {
     scroll-margin-top: 96px;
   }
-  .single-card {
+  .singles {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     max-width: 38rem;
     margin: 0 auto;
   }
-  .single-card a {
+  .single-card { margin: 0; }
+  .single-card .row {
     display: flex;
     align-items: center;
     gap: 18px;
@@ -310,15 +308,13 @@
     border: 1px solid var(--line);
     border-radius: 6px;
     color: inherit;
-    text-decoration: none;
   }
-  .single-card a:hover { border-color: rgba(224, 178, 74, 0.55); }
+  .single-card .single-copy { min-width: 0; }
   .single-card a:focus { outline: none; }
   .single-card a:focus-visible {
     outline: 2px solid var(--glow);
     outline-offset: 3px;
   }
-  .single-card a > span { min-width: 0; }
   .single-card img {
     width: 96px;
     height: 96px;
@@ -339,72 +335,36 @@
     color: var(--mute);
     font-size: 0.95rem;
   }
-  .single-card .more {
+  .single-card .stores {
     margin-top: 6px;
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+  .single-card .stores a {
+    color: var(--glow);
+    text-decoration: none;
+  }
+  .single-card .more { margin-top: 6px; }
+  .single-card .more a {
     color: var(--glow);
     text-decoration: underline;
     text-underline-offset: 0.18em;
   }
+  .single-card .stores a:hover,
+  .single-card .more a:hover { text-decoration: underline; }
+  .album-when {
+    max-width: 38rem;
+    margin: 16px auto 0;
+    text-align: center;
+    color: var(--mute);
+    font-size: 0.95rem;
+  }
   @media (max-width: 520px) {
-    .single-card a { gap: 14px; padding: 12px; }
+    .single-card .row { gap: 14px; padding: 12px; }
     .single-card img { width: 76px; height: 76px; }
   }
   .tracks a { color: inherit; text-decoration: none; }
   .tracks a:hover { color: var(--glow); }
-
-  .lookout {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin: 1.2em 0 0.6em;
-  }
-  .release-calendar {
-    list-style: none;
-    padding: 0;
-    margin: 0.4em 0 0;
-    max-width: 28rem;
-    font-size: 0.95rem;
-    color: var(--mute);
-  }
-  .release-calendar li {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.35em 0;
-    border-bottom: 1px solid rgba(224,178,74,0.12);
-  }
-  .release-calendar .when {
-    white-space: nowrap;
-    color: var(--glow);
-    letter-spacing: 0.02em;
-  }
-  .release-calendar .what {
-    color: var(--ink);
-  }
-  .release-calendar a {
-    color: inherit;
-    text-decoration: none;
-  }
-  .release-calendar a:hover {
-    text-decoration: underline;
-  }
-  .release-calendar .row-links {
-    display: block;
-    font-size: 0.82rem;
-    color: var(--mute);
-    margin-top: 0.15em;
-  }
-  .release-calendar .row-links a {
-    color: var(--glow);
-  }
-
-
-  .release-note {
-    margin: 0.75em 0 0;
-    font-size: 0.85rem;
-    color: var(--mute);
-    max-width: 28rem;
-  }
 
 </style>
 <!-- Meta Pixel Code -->
@@ -446,31 +406,40 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
 
   <hr class="rule">
 
-  <div id="little-film">
+  <div class="singles" id="little-film">
     <section class="single-card" id="luminescent-release" aria-labelledby="luminescent-title">
-      <a href="/scores/luminescent-dreams/">
-        <img src="assets/covers/luminescent-dreams-96.jpg" srcset="assets/covers/luminescent-dreams-96.jpg 96w, assets/covers/luminescent-dreams-1200.jpg 1200w" sizes="(max-width: 520px) 76px, 96px" width="96" height="96" alt="">
-        <span>
+      <div class="row">
+        <img src="assets/covers/luminescent-dreams-96.jpg" srcset="assets/covers/luminescent-dreams-96.jpg 96w, assets/covers/luminescent-dreams-1200.jpg 1200w" sizes="(max-width: 520px) 76px, 96px" width="96" height="96" alt="Luminescent Dreams single cover">
+        <div class="single-copy">
           <h2 id="luminescent-title">Luminescent Dreams</h2>
           <p>The latest single, out now.</p>
-          <p class="more">Piano score</p>
-        </span>
-      </a>
+          <p class="stores"><a href="https://open.spotify.com/track/6Ye477sEzcJg1T6HR0LpRO" target="_blank" rel="noopener">Spotify</a> · <a href="https://music.apple.com/us/album/luminescent-dreams/6818323895?i=6818323896&amp;ls=1" target="_blank" rel="noopener">Apple Music</a> · <a href="https://music.amazon.com/albums/B0HLRPB1WJ" target="_blank" rel="noopener">Amazon Music</a></p>
+          <p class="more"><a href="/scores/luminescent-dreams/">Piano score</a></p>
+        </div>
+      </div>
+    </section>
+    <section class="single-card" id="tapestry" aria-labelledby="tapestry-title">
+      <div class="row">
+        <img src="assets/covers/tapestry-of-whispers-96.jpg" srcset="assets/covers/tapestry-of-whispers-96.jpg 96w, assets/covers/tapestry-of-whispers-192.jpg 192w" sizes="(max-width: 520px) 76px, 96px" width="96" height="96" alt="Tapestry of Whispers single cover">
+        <div class="single-copy">
+          <h2 id="tapestry-title">Tapestry of Whispers</h2>
+          <p>Previous single, out now.</p>
+          <p class="stores"><a href="https://open.spotify.com/track/5EEBYde0Cn459esR9Kohjn" target="_blank" rel="noopener">Spotify</a> · <a href="https://music.apple.com/us/album/tapestry-of-whispers/6820663406?i=6820663407&amp;ls=1" target="_blank" rel="noopener">Apple Music</a> · <a href="https://music.amazon.com/albums/B0HMFN2M3T" target="_blank" rel="noopener">Amazon Music</a> · <a href="https://www.youtube.com/watch?v=qoK6yj5SjIA" target="_blank" rel="noopener">YouTube</a></p>
+          <p class="more"><a href="/scores/tapestry-of-whispers/">Piano score</a></p>
+        </div>
+      </div>
+    </section>
+    <section class="single-card" id="lackadaisical-single" aria-labelledby="lackadaisical-single-title">
+      <div class="row">
+        <div class="single-copy">
+          <h2 id="lackadaisical-single-title">Lackadaisical Perfection</h2>
+          <p>Single · November 27, 2026</p>
+          <p class="more"><a href="/scores/lackadaisical-perfection-chords/">Piano score</a></p>
+        </div>
+      </div>
     </section>
   </div>
-
-  <hr class="rule">
-
-  <div class="from-david">
-    <p class="lookout">New pieces are coming.</p>
-        <ul class="release-calendar">
-      <li><span class="what"><a href="/scores/luminescent-dreams/">Luminescent Dreams</a><span class="row-links">Out now · <a href="/spotify/" target="_blank" rel="noopener">Spotify</a> · <a href="/apple/" target="_blank" rel="noopener">Apple Music</a> · <a href="/amazon/" target="_blank" rel="noopener">Amazon Music</a> · <a href="https://www.youtube.com/@melodicsubtlety" target="_blank" rel="noopener">YouTube</a></span></span><span class="when">New · November 6</span></li>
-      <li id="tapestry"><span class="what"><a href="/tapestry-of-whispers/">Tapestry of Whispers</a><span class="row-links">Previous single · <a href="https://music.amazon.com/albums/B0HMFN2M3T" target="_blank" rel="noopener">Amazon Music</a></span></span><span class="when">October 16</span></li>
-      <li><span class="what"><a href="#lackadaisical-perfection">Lackadaisical Perfection</a></span><span class="when">November 27, 2026</span></li>
-      <li><span class="what"><a href="#pieces">Full album</a></span><span class="when">January 8, 2027</span></li>
-    </ul>
-    <p class="release-note">Luminescent Dreams is out now. Tapestry of Whispers is the previous single. Listen links for the next releases will appear here on each street date.</p>
-</div>
+  <p class="album-when">Album · January 8, 2027</p>
 
   <p class="label" id="pieces">The pieces</p>
   <ol class="tracks">
