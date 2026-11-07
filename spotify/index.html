@@ -9,12 +9,12 @@
   <meta charset="utf-8">
   <title>Luminescent Dreams</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Luminescent Dreams by David Rivera, neoclassical American composer. Listen on Spotify or Apple Music.">
+  <meta name="description" content="Luminescent Dreams by David Rivera, neoclassical American composer. Listen on Spotify, Apple Music, or Amazon Music.">
   <link rel="canonical" href="https://lackadaisicalperfection.com/spotify/">
   <meta property="og:type" content="music.song">
   <meta property="og:site_name" content="Lackadaisical Perfection">
   <meta property="og:title" content="Luminescent Dreams">
-  <meta property="og:description" content="Luminescent Dreams by David Rivera, neoclassical American composer. Listen on Spotify or Apple Music.">
+  <meta property="og:description" content="Luminescent Dreams by David Rivera, neoclassical American composer. Listen on Spotify, Apple Music, or Amazon Music.">
   <meta property="og:url" content="https://lackadaisicalperfection.com/spotify/">
   <meta property="og:image" content="https://lackadaisicalperfection.com/assets/covers/luminescent-dreams-1200.jpg">
   <meta property="og:image:alt" content="Cover of Luminescent Dreams by David Rivera">
@@ -22,7 +22,7 @@
   <meta property="og:image:height" content="1200">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Luminescent Dreams">
-  <meta name="twitter:description" content="Luminescent Dreams by David Rivera, neoclassical American composer. Listen on Spotify or Apple Music.">
+  <meta name="twitter:description" content="Luminescent Dreams by David Rivera, neoclassical American composer. Listen on Spotify, Apple Music, or Amazon Music.">
   <meta name="twitter:image" content="https://lackadaisicalperfection.com/assets/covers/luminescent-dreams-1200.jpg">
   <meta name="twitter:image:alt" content="Cover of Luminescent Dreams by David Rivera">
 <!-- Meta Pixel Code -->
@@ -147,6 +147,7 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
   <div class="listen-actions">
     <a class="primary" data-tap="SpotifyTap" href="https://open.spotify.com/track/6Ye477sEzcJg1T6HR0LpRO" target="_blank" rel="noopener">Listen on Spotify</a>
     <a class="secondary" data-tap="AppleTap" href="https://music.apple.com/us/album/luminescent-dreams/6818323895?i=6818323896&amp;ls=1" target="_blank" rel="noopener">Listen on Apple Music</a>
+    <a class="secondary" data-tap="AmazonTap" href="https://music.amazon.com/albums/B0HLRPB1WJ" target="_blank" rel="noopener">Listen on Amazon Music</a>
   </div>
   <img class="cover" src="/assets/covers/luminescent-dreams-1200.jpg" width="1200" height="1200" alt="Luminescent Dreams single cover">
   <h1>Luminescent Dreams</h1>
@@ -190,7 +191,7 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
       if (typeof fbq !== "function") return;
 
       var name = a.getAttribute("data-tap");
-      if (name !== "SpotifyTap" && name !== "AppleTap") return;
+      if (name !== "SpotifyTap" && name !== "AppleTap" && name !== "AmazonTap") return;
 
       var href = a.href;
       if (!href) return;
