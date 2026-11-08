@@ -25,6 +25,7 @@
   <meta name="twitter:description" content="Luminescent Dreams by David Rivera, neoclassical American composer. Listen on Apple Music, Spotify, or Amazon Music.">
   <meta name="twitter:image" content="https://lackadaisicalperfection.com/assets/covers/luminescent-dreams-1200.jpg">
   <meta name="twitter:image:alt" content="Cover of Luminescent Dreams by David Rivera">
+<script src="/assets/listen-params.js"></script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -36,7 +37,8 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '257777058255900');
-fbq('track', 'PageView');
+if (typeof lpPageViewParams === 'function') fbq('track', 'PageView', lpPageViewParams(location.href) || {});
+else fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" alt="" style="display:none"
 src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
@@ -156,10 +158,21 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
    in this same click. This page stays up, so the hit is not dropped.
    Inbound utm_* (and any other query) stays on this page. Store hrefs are
    absolute and are never rebuilt from location.search, so Apple's i and ls
-   parameters cannot be broken by a second question mark. */
+   parameters cannot be broken by a second question mark.
+   listen-params.js copies the song id, this page's path, and allowlisted
+   utm_* into the event. It does not copy the rest of the query. */
 (function () {
   var WAIT_MS = 300;
   var buttons = document.querySelectorAll("a[data-tap]");
+
+  function tapParams(anchor) {
+    try {
+      if (typeof window.lpListenParams !== "function") return {};
+      return window.lpListenParams({ href: anchor.href, pageUrl: location.href }) || {};
+    } catch (err) {
+      return {};
+    }
+  }
 
   function plainClick(event) {
     if (event.defaultPrevented) return false;
@@ -192,7 +205,7 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
       event.preventDefault();
 
       if (newTab) {
-        try { fbq("trackCustom", name); } catch (err) {}
+        try { fbq("trackCustom", name, tapParams(a)); } catch (err) {}
         openStore(href);
         return;
       }
@@ -205,7 +218,7 @@ src="https://www.facebook.com/tr?id=257777058255900&ev=PageView&noscript=1"
       }
 
       try {
-        fbq("trackCustom", name, {}, { eventCallback: leave });
+        fbq("trackCustom", name, tapParams(a), { eventCallback: leave });
       } catch (err) {
         leave();
         return;

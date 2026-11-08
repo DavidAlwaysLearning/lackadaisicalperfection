@@ -93,12 +93,26 @@
       !event.defaultPrevented;
     var pageAlreadySendsSpotifyTap = a.getAttribute("data-tap") === "SpotifyTap" && ordinary && !!a.href;
 
+    /* Luminescent store URLs add song ids when listen-params.js is on the page.
+       Other songs, including Tapestry, keep the original Lead and SpotifyTap. */
+    var songParams = null;
     try {
-      window.fbq("track", "Lead", { content_name: "Spotify tap" });
+      if (typeof window.lpListenParams === "function" && a.href) {
+        songParams = window.lpListenParams({ href: a.href, pageUrl: location.href });
+      }
+    } catch (err) { songParams = null; }
+    var leadParams = { content_name: "Spotify tap" };
+    try {
+      if (songParams && typeof window.lpLeadParams === "function") leadParams = window.lpLeadParams(songParams);
+    } catch (err) { leadParams = { content_name: "Spotify tap" }; }
+
+    try {
+      window.fbq("track", "Lead", leadParams);
     } catch (err) {}
     if (pageAlreadySendsSpotifyTap) return;
     try {
-      window.fbq("trackCustom", "SpotifyTap");
+      if (songParams) window.fbq("trackCustom", "SpotifyTap", songParams);
+      else window.fbq("trackCustom", "SpotifyTap");
     } catch (err) {}
   }, true);
 
