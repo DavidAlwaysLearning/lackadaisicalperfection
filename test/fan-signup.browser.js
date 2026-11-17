@@ -112,10 +112,16 @@ async function startSite() {
     const ext = path.extname(file);
     res.setHeader("Cache-Control", "no-store");
     if (rel === "/assets/fan-signup.js" && endpointOverride) {
-      const js = fs.readFileSync(file, "utf8").replace(
-        'var FAN_SIGNUP_ENDPOINT = "PASTE_WEB_APP_URL_HERE";',
+      const original = fs.readFileSync(file, "utf8");
+      const js = original.replace(
+        /var FAN_SIGNUP_ENDPOINT = "[^"]*";/,
         "var FAN_SIGNUP_ENDPOINT = " + JSON.stringify(endpointOverride) + ";"
       );
+      if (js === original || js.includes("script.google.com")) {
+        res.writeHead(500, { "Content-Type": "text/plain" });
+        res.end("refusing to serve the real signup endpoint from the mock suite");
+        return;
+      }
       res.writeHead(200, { "Content-Type": MIME[".js"] });
       res.end(js);
       return;
@@ -168,12 +174,16 @@ async function main() {
     const consoleErrors = [];
     const pageErrors = [];
     const mailchimp = [];
+    const googlePosts = [];
     browserPage.on("console", (msg) => {
       if (msg.type() === "error") consoleErrors.push(msg.text());
     });
     browserPage.on("pageerror", (err) => pageErrors.push(String(err)));
     browserPage.on("request", (req) => {
       if (/list-manage|mailchimp|chimpstatic|mc\.us\d/i.test(req.url())) mailchimp.push(req.url());
+      if (req.method() === "POST" && /script\.google\.com|googleusercontent\.com/i.test(req.url())) {
+        googlePosts.push(req.url());
+      }
     });
     browserPage.on("requestfailed", (req) => {
       if (/list-manage|mailchimp|chimpstatic|mc\.us\d/i.test(req.url())) mailchimp.push(req.url());
@@ -342,18 +352,12 @@ async function main() {
     record("Screenshot of the thank-you after submit", fs.existsSync(afterPath), afterPath);
 
     site.setEndpoint(null);
-    const postsAtPreview = mock.posts.length;
-    const previewOpened = Date.now();
-    await browserPage.goto(site.origin + "/subscribe/?email=preview%40example.com", { waitUntil: "domcontentloaded", timeout: 20000 });
-    const previewRemain = 3500 - (Date.now() - previewOpened);
-    if (previewRemain > 0) await sleep(previewRemain);
-    await browserPage.click("button[type='submit']");
-    await sleep(400);
-    state = await readSignup();
+    await browserPage.goto(site.origin + "/subscribe/", { waitUntil: "domcontentloaded", timeout: 20000 });
+    const liveEndpoint = await browserPage.evaluate(() => window.FAN_SIGNUP_ENDPOINT);
     record(
-      "Placeholder endpoint does not send and says the preview is not saving",
-      state.thanks === api.PREVIEW && mock.posts.length === postsAtPreview,
-      state.thanks || "(hidden)"
+      "Unmocked page points at the deployed web app and is not submitted here",
+      liveEndpoint === "https://script.google.com/macros/s/AKfycbzF4JFcLWCxvtPqP-k0oJMKwBOW5JfXHHwmYI-D8UrYUb-4iovsnK9Y469M2F64bBk-pw/exec",
+      liveEndpoint || "(missing)"
     );
 
     const ourConsole = consoleErrors.filter((text) => !/facebook|fbevents|goatcounter|gc\.zgo\.at|connect\.facebook/i.test(text));
@@ -367,6 +371,11 @@ async function main() {
       "No Mailchimp requests",
       mailchimp.length === 0,
       mailchimp.slice(0, 3).join(" | ") || "none"
+    );
+    record(
+      "Mock suite does not post to the real web app",
+      googlePosts.length === 0,
+      googlePosts.join(" | ") || "none"
     );
     if (thirdParty.length) {
       record("Third-party tracker console noise", true, thirdParty.length + " message(s) from Facebook or GoatCounter, ignored");

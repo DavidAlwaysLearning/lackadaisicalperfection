@@ -1,6 +1,6 @@
 # Fan signup
 
-This replaces the Mailchimp form. A page posts the email here, and this script appends a row to a Google Sheet. Nothing in this folder is deployed by itself. David deploys it from his Google account, then pastes the web app URL into `FAN_SIGNUP_ENDPOINT` in `assets/fan-signup.js`.
+This replaces the Mailchimp form. A page posts the email here, and this script appends a row to a Google Sheet. The web app is deployed, and `FAN_SIGNUP_ENDPOINT` in `assets/fan-signup.js` already has its URL. The live site uses it only after this pull request is merged.
 
 The sheet columns are:
 
@@ -44,24 +44,25 @@ Use **Anyone**, not **Anyone with a Google account**. Fans are not signed in. If
 
 ## 4. Point the site at it
 
-1. Open `assets/fan-signup.js`.
-2. Replace `PASTE_WEB_APP_URL_HERE` with the web app URL:
+The draft already sets `FAN_SIGNUP_ENDPOINT` to the deployed web app. lackadaisicalperfection.com keeps the old signup until this pull request is merged.
+
+If a new deployment gets a new URL, replace the constant in `assets/fan-signup.js`:
 
 ```javascript
 var FAN_SIGNUP_ENDPOINT = "https://script.google.com/macros/s/YOUR_ID/exec";
 ```
-
-3. Commit that change and merge it only when you want the live site to use the sheet. Until this pull request is merged, lackadaisicalperfection.com still has the current signup. Until the placeholder is replaced, the new form shows a thank-you and does not send the email.
 
 ## 5. Check a row
 
 `loadedAt` is the page-load time in milliseconds. Use a value at least a few seconds in the past.
 
 ```bash
-curl -sL -X POST \
+curl -sL \
   -H 'Content-Type: text/plain;charset=utf-8' \
-  -d '{"email":"you@example.com","firstName":"Ada","source":"/subscribe/","userAgent":"curl","company_fax":"","loadedAt":'"$(($(date +%s%3N) - 10000))"'}' \
+  --data-raw '{"email":"you@example.com","firstName":"Ada","source":"/subscribe/","userAgent":"curl","company_fax":"","loadedAt":'"$(($(date +%s%3N) - 10000))"'}' \
   'https://script.google.com/macros/s/YOUR_ID/exec'
 ```
+
+`--data-raw` sends the POST. Leave off `-X POST`. With both `-X POST` and `-L`, curl repeats the POST on Google's redirect and gets an HTML error page instead of the script's JSON.
 
 A new address returns `{"ok":true}`. The same address again returns `{"ok":true,"duplicate":true}` and does not add a second row. A bad address returns `{"ok":false,"error":"invalid email"}`.

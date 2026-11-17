@@ -36,9 +36,11 @@ test("submits under 3 seconds are too soon", () => {
   assert.equal(api.tooSoon(1000, 4000), false);
 });
 
-test("the endpoint stays a placeholder until a real https URL is pasted", () => {
+test("the endpoint is the deployed web app", () => {
   const source = read("assets/fan-signup.js");
-  assert.match(source, /var FAN_SIGNUP_ENDPOINT = "PASTE_WEB_APP_URL_HERE"/);
+  const deployed = "https://script.google.com/macros/s/AKfycbzF4JFcLWCxvtPqP-k0oJMKwBOW5JfXHHwmYI-D8UrYUb-4iovsnK9Y469M2F64bBk-pw/exec";
+  assert.match(source, new RegExp("var FAN_SIGNUP_ENDPOINT = " + JSON.stringify(deployed).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  assert.equal(api.endpointReady(deployed), true);
   assert.equal(api.endpointReady("PASTE_WEB_APP_URL_HERE"), false);
   assert.equal(api.endpointReady(""), false);
   assert.equal(api.endpointReady("http://example.com/exec"), false);

@@ -1,8 +1,7 @@
 /* Fan signup shared by every form with data-fan-signup.
-   PASTE THE GOOGLE APPS SCRIPT WEB APP URL HERE.
-   Steps: tools/fan-signup/README.md
-   While this is still the placeholder, the form does not send an email anywhere. */
-var FAN_SIGNUP_ENDPOINT = "PASTE_WEB_APP_URL_HERE";
+   This is the deployed Apps Script web app (execute as David, anyone can access).
+   If that deployment is replaced, paste the new URL here. Steps: tools/fan-signup/README.md */
+var FAN_SIGNUP_ENDPOINT = "https://script.google.com/macros/s/AKfycbzF4JFcLWCxvtPqP-k0oJMKwBOW5JfXHHwmYI-D8UrYUb-4iovsnK9Y469M2F64bBk-pw/exec";
 
 (function (factory) {
   var api = factory();
