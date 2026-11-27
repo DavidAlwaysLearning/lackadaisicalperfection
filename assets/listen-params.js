@@ -1,4 +1,4 @@
-/* Parameters for Luminescent Dreams listen events.
+/* Parameters for Lackadaisical Perfection listen events.
    The Meta pixel puts the address bar in dl, but the request Referer is only
    the site origin, and Events Manager can show that origin alone. Custom
    parameters are what a song-specific conversion can filter on.
@@ -16,12 +16,12 @@
 })(function () {
   "use strict";
 
-  var SONG = "luminescent-dreams";
-  var SONG_NAME = "Luminescent Dreams";
-  var SPOTIFY_TRACK = "6Ye477sEzcJg1T6HR0LpRO";
-  var APPLE_ALBUM = "6818323895";
-  var APPLE_TRACK = "6818323896";
-  var AMAZON_ALBUM = "B0HLRPB1WJ";
+  var SONG = "lackadaisical-perfection";
+  var SONG_NAME = "Lackadaisical Perfection";
+  var SPOTIFY_TRACK = "4GvIUbIvx0LIsZ0d3zg9ky";
+  var APPLE_ALBUM = "6820767050";
+  var APPLE_TRACK = "6820767051";
+  var AMAZON_ALBUM = "B0HMFT7TCJ";
   var UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_id"];
   /* Campaign labels only: no @, spaces, slashes, or encoded leftovers. */
   var SAFE_VALUE = /^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/;

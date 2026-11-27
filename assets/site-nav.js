@@ -93,8 +93,8 @@
       !event.defaultPrevented;
     var pageAlreadySendsSpotifyTap = a.getAttribute("data-tap") === "SpotifyTap" && ordinary && !!a.href;
 
-    /* Luminescent store URLs add song ids when listen-params.js is on the page.
-       Other songs, including Tapestry, keep the original Lead and SpotifyTap. */
+    /* The current single's store URLs add song ids when listen-params.js is on the page.
+       Other songs, including Tapestry and Luminescent Dreams, keep the original Lead and SpotifyTap. */
     var songParams = null;
     try {
       if (typeof window.lpListenParams === "function" && a.href) {

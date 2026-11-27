@@ -21,6 +21,7 @@ const types = {
   ".js": "text/javascript; charset=utf-8",
   ".css": "text/css; charset=utf-8",
   ".jpg": "image/jpeg",
+  ".webp": "image/webp",
   ".png": "image/png",
   ".svg": "image/svg+xml",
   ".ico": "image/x-icon"
@@ -179,7 +180,7 @@ try {
   }
 
   const spotifyView = await openPage("/spotify/");
-  assertIncludes("PageView", spotifyView.parsed.blob, "luminescent-dreams");
+  assertIncludes("PageView", spotifyView.parsed.blob, "lackadaisical-perfection");
   assertIncludes("PageView", spotifyView.parsed.blob, '"/spotify/"');
   assertIncludes("PageView path", spotifyView.parsed.dl, "/spotify/");
   assertIncludes("PageView source", spotifyView.parsed.dl, "utm_content=audience-test");
@@ -190,22 +191,22 @@ try {
   summary.push({ event: "PageView", referer: spotifyView.referer, dl: spotifyView.parsed.dl, cd: spotifyView.parsed.cd });
 
   const spotifyTap = await click('a[data-tap="SpotifyTap"]');
-  if (spotifyTap.click.href !== "https://open.spotify.com/track/6Ye477sEzcJg1T6HR0LpRO") {
+  if (spotifyTap.click.href !== "https://open.spotify.com/track/4GvIUbIvx0LIsZ0d3zg9ky") {
     throw new Error("Spotify href changed: " + spotifyTap.click.href);
   }
-  if (!spotifyTap.click.opened.includes("https://open.spotify.com/track/6Ye477sEzcJg1T6HR0LpRO")) {
+  if (!spotifyTap.click.opened.includes("https://open.spotify.com/track/4GvIUbIvx0LIsZ0d3zg9ky")) {
     throw new Error("Spotify tap did not open the track: " + JSON.stringify(spotifyTap.click));
   }
   const lead = spotifyTap.events.find((hit) => hit.parsed.ev === "Lead");
   const tap = spotifyTap.events.find((hit) => hit.parsed.ev === "SpotifyTap");
   if (!lead || !tap) throw new Error("missing Lead or SpotifyTap: " + JSON.stringify(spotifyTap.events.map((hit) => hit.parsed.ev)));
   assertIncludes("Lead", lead.parsed.blob, "Spotify tap");
-  assertIncludes("Lead song", lead.parsed.blob, "luminescent-dreams");
-  assertIncludes("Lead track", lead.parsed.blob, "spotify:6Ye477sEzcJg1T6HR0LpRO");
+  assertIncludes("Lead song", lead.parsed.blob, "lackadaisical-perfection");
+  assertIncludes("Lead track", lead.parsed.blob, "spotify:4GvIUbIvx0LIsZ0d3zg9ky");
   assertIncludes("Lead source", lead.parsed.blob, "audience-test");
   assertOmits("Lead params", lead.parsed.blob, "pii-token-email");
-  assertIncludes("SpotifyTap", tap.parsed.blob, "Luminescent Dreams");
-  assertIncludes("SpotifyTap track", tap.parsed.blob, "spotify:6Ye477sEzcJg1T6HR0LpRO");
+  assertIncludes("SpotifyTap", tap.parsed.blob, "Lackadaisical Perfection");
+  assertIncludes("SpotifyTap track", tap.parsed.blob, "spotify:4GvIUbIvx0LIsZ0d3zg9ky");
   assertIncludes("SpotifyTap path", tap.parsed.blob, "/spotify/");
   assertIncludes("SpotifyTap source", tap.parsed.blob, "audience-test");
   assertOmits("SpotifyTap params", tap.parsed.blob, "pii-token-email");
@@ -213,14 +214,14 @@ try {
   summary.push({ event: "Lead", cd: lead.parsed.cd }, { event: "SpotifyTap", cd: tap.parsed.cd, opened: spotifyTap.click.opened });
 
   const appleTap = await click('a[data-tap="AppleTap"]');
-  if (!appleTap.click.href.includes("i=6818323896") || !appleTap.click.opened.some((href) => href.includes("i=6818323896") && href.includes("/6818323895"))) {
+  if (!appleTap.click.href.includes("i=6820767051") || !appleTap.click.opened.some((href) => href.includes("i=6820767051") && href.includes("/6820767050"))) {
     throw new Error("Apple href changed: " + JSON.stringify(appleTap.click));
   }
   const apple = appleTap.events.find((hit) => hit.parsed.ev === "AppleTap");
   if (!apple) throw new Error("missing AppleTap");
   if (appleTap.events.some((hit) => hit.parsed.ev === "Lead")) throw new Error("Apple tap also fired Lead");
-  assertIncludes("AppleTap", apple.parsed.blob, "apple:6818323896");
-  assertIncludes("AppleTap", apple.parsed.blob, "luminescent-dreams");
+  assertIncludes("AppleTap", apple.parsed.blob, "apple:6820767051");
+  assertIncludes("AppleTap", apple.parsed.blob, "lackadaisical-perfection");
   assertOmits("AppleTap", apple.parsed.blob, "ls=1");
   summary.push({ event: "AppleTap", cd: apple.parsed.cd, href: appleTap.click.href });
 
@@ -231,9 +232,9 @@ try {
   const amazonTap = await click('a[data-tap="AmazonTap"]');
   const amazon = amazonTap.events.find((hit) => hit.parsed.ev === "AmazonTap");
   if (!amazon) throw new Error("missing AmazonTap: " + JSON.stringify(amazonTap.events.map((hit) => hit.parsed.ev)));
-  assertIncludes("AmazonTap", amazon.parsed.blob, "amazon:B0HLRPB1WJ");
+  assertIncludes("AmazonTap", amazon.parsed.blob, "amazon:B0HMFT7TCJ");
   assertIncludes("AmazonTap path", amazon.parsed.blob, "/spotify/");
-  const amazonUrl = "https://music.amazon.com/albums/B0HLRPB1WJ";
+  const amazonUrl = "https://music.amazon.com/albums/B0HMFT7TCJ";
   const amazonNavigation = amazonTap.events.map((hit) => hit.url).find((url) => {
     try { return new URL(url).hostname === "music.amazon.com"; } catch (err) { return false; }
   });
@@ -241,7 +242,7 @@ try {
   let navigationClean = false;
   if (amazonNavigation) {
     const destination = new URL(amazonNavigation);
-    navigationClean = destination.pathname.replace(/\/$/, "") === "/albums/B0HLRPB1WJ" &&
+    navigationClean = destination.pathname.replace(/\/$/, "") === "/albums/B0HMFT7TCJ" &&
       !destination.search.includes("utm_") &&
       !destination.search.includes("email") &&
       !destination.search.includes("fbclid");
@@ -267,6 +268,7 @@ try {
   summary.push({ event: "PageView /apple/", cd: appleView.parsed.cd }, { event: "PageView /amazon/", cd: amazonView.parsed.cd });
 
   const tapestryView = await openPage("/tapestry-of-whispers/");
+  assertOmits("Tapestry PageView", tapestryView.parsed.blob, "lackadaisical-perfection");
   assertOmits("Tapestry PageView", tapestryView.parsed.blob, "luminescent-dreams");
   await send("Runtime.evaluate", {
     expression: `document.addEventListener("click", function (event) {
@@ -283,7 +285,10 @@ try {
   const tapestrySpotify = tapestryTap.events.find((hit) => hit.parsed.ev === "SpotifyTap");
   if (!tapestryLead || !tapestrySpotify) throw new Error("Tapestry click missing events");
   assertIncludes("Tapestry Lead", tapestryLead.parsed.blob, "Spotify tap");
+  assertOmits("Tapestry Lead", tapestryLead.parsed.blob, "lackadaisical-perfection");
   assertOmits("Tapestry Lead", tapestryLead.parsed.blob, "luminescent-dreams");
+  assertOmits("Tapestry SpotifyTap", tapestrySpotify.parsed.blob, "lackadaisical-perfection");
+  assertOmits("Tapestry SpotifyTap", tapestrySpotify.parsed.blob, "4GvIUbIvx0LIsZ0d3zg9ky");
   assertOmits("Tapestry SpotifyTap", tapestrySpotify.parsed.blob, "luminescent-dreams");
   assertOmits("Tapestry SpotifyTap", tapestrySpotify.parsed.blob, "6Ye477sEzcJg1T6HR0LpRO");
   summary.push({
