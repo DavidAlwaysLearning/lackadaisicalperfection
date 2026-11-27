@@ -7,9 +7,9 @@ const root = path.join(__dirname, "..");
 const api = require(path.join(root, "assets/listen-params.js"));
 
 const PAGE = "https://lackadaisicalperfection.com/spotify/?utm_source=meta&utm_medium=paid&utm_campaign=luminescent-dreams&utm_content=audience-test&utm_term=freeform+query&utm_id=adset-1&fbclid=IwAR_FAKE_NOT_A_USER&email=pii-token-email&name=David";
-const SPOTIFY = "https://open.spotify.com/track/6Ye477sEzcJg1T6HR0LpRO";
-const APPLE = "https://music.apple.com/us/album/luminescent-dreams/6818323895?i=6818323896&ls=1";
-const AMAZON = "https://music.amazon.com/albums/B0HLRPB1WJ";
+const SPOTIFY = "https://open.spotify.com/track/4GvIUbIvx0LIsZ0d3zg9ky";
+const APPLE = "https://music.apple.com/us/album/lackadaisical-perfection-single/6820767050?i=6820767051&ls=1";
+const AMAZON = "https://music.amazon.com/albums/B0HMFT7TCJ";
 
 function read(rel) {
   return fs.readFileSync(path.join(root, rel), "utf8");
@@ -34,8 +34,8 @@ function anchors(html) {
 
 test("Spotify tap carries the track id, path, and allowlisted source", () => {
   const params = api.listenParams({ href: SPOTIFY, pageUrl: PAGE });
-  assert.deepEqual(params.content_ids, ["luminescent-dreams", "spotify:6Ye477sEzcJg1T6HR0LpRO"]);
-  assert.equal(params.content_name, "Luminescent Dreams");
+  assert.deepEqual(params.content_ids, ["lackadaisical-perfection", "spotify:4GvIUbIvx0LIsZ0d3zg9ky"]);
+  assert.equal(params.content_name, "Lackadaisical Perfection");
   assert.equal(params.content_type, "product");
   assert.equal(params.content_category, "spotify");
   assert.equal(params.page_path, "/spotify/");
@@ -59,7 +59,7 @@ test("Apple and Amazon taps use their own canonical ids and ignore store query",
     pageUrl: "https://lackadaisicalperfection.com/apple/index.html?utm_content=audience-b"
   });
   assert.equal(apple.content_category, "apple");
-  assert.deepEqual(apple.content_ids, ["luminescent-dreams", "apple:6818323896"]);
+  assert.deepEqual(apple.content_ids, ["lackadaisical-perfection", "apple:6820767051"]);
   assert.equal(apple.page_path, "/apple/");
   assert.equal(apple.utm_content, "audience-b");
   assert.equal(apple.utm_source, undefined);
@@ -69,22 +69,26 @@ test("Apple and Amazon taps use their own canonical ids and ignore store query",
     pageUrl: "https://lackadaisicalperfection.com/amazon/?utm_source=meta"
   });
   assert.equal(amazon.content_category, "amazon");
-  assert.deepEqual(amazon.content_ids, ["luminescent-dreams", "amazon:B0HLRPB1WJ"]);
+  assert.deepEqual(amazon.content_ids, ["lackadaisical-perfection", "amazon:B0HMFT7TCJ"]);
   assert.equal(amazon.page_path, "/amazon/");
   assert.equal(amazon.utm_source, "meta");
 });
 
-test("other songs and non-store links are not labeled as Luminescent Dreams", () => {
+test("other songs and non-store links are not labeled as Lackadaisical Perfection", () => {
   const samples = [
+    "https://open.spotify.com/track/6Ye477sEzcJg1T6HR0LpRO",
     "https://open.spotify.com/track/5EEBYde0Cn459esR9Kohjn",
     "https://open.spotify.com/track/63f3kwienzLlNG3Qzx2TIz",
     "https://open.spotify.com/track/1lBCRmvVNIjltDzYi80JSI",
     "https://open.spotify.com/album/3Yo4sk9QOR7ToSO01Wn72U",
-    "https://open.spotify.com/embed/track/6Ye477sEzcJg1T6HR0LpRO",
+    "https://open.spotify.com/embed/track/4GvIUbIvx0LIsZ0d3zg9ky",
     "https://open.spotify.com/artist/5qoC4NXvjfV3cylbXALzV3",
+    "https://music.apple.com/us/album/luminescent-dreams/6818323895?i=6818323896&ls=1",
     "https://music.apple.com/us/album/tapestry-of-whispers/6820663406?i=6820663407&ls=1",
+    "https://music.amazon.com/albums/B0HLRPB1WJ",
     "https://music.amazon.com/albums/B0HMFN2M3T",
-    "https://music.apple.com/us/album/luminescent-dreams/6818323895?i=999",
+    "https://music.amazon.com/artists/B0HJF4T4QZ",
+    "https://music.apple.com/us/album/lackadaisical-perfection-single/6820767050?i=999",
     "https://lackadaisicalperfection.com/spotify/",
     "javascript:alert(1)"
   ];
@@ -111,12 +115,12 @@ test("unsafe campaign values are dropped and safe ones are bounded at 64 charact
 
 test("landing page views are song-specific and are not store taps", () => {
   const view = api.pageViewParams(PAGE);
-  assert.deepEqual(view.content_ids, ["luminescent-dreams"]);
-  assert.equal(view.content_name, "Luminescent Dreams");
+  assert.deepEqual(view.content_ids, ["lackadaisical-perfection"]);
+  assert.equal(view.content_name, "Lackadaisical Perfection");
   assert.equal(view.content_category, undefined);
   assert.equal(view.page_path, "/spotify/");
   assert.equal(view.utm_content, "audience-test");
-  assert.equal(JSON.stringify(view).includes("6Ye477sEzcJg1T6HR0LpRO"), false);
+  assert.equal(JSON.stringify(view).includes("4GvIUbIvx0LIsZ0d3zg9ky"), false);
   assert.equal(api.pageViewParams("https://lackadaisicalperfection.com/apple/").page_path, "/apple/");
   assert.equal(api.pageViewParams("https://lackadaisicalperfection.com/amazon/index.html").page_path, "/amazon/");
   assert.equal(api.pageViewParams("https://lackadaisicalperfection.com/tapestry-of-whispers/?utm_content=audience-test"), null);
@@ -130,7 +134,7 @@ test("Lead keeps the existing content_name and adds the song ids beside it", () 
   const song = api.listenParams({ href: SPOTIFY, pageUrl: PAGE });
   const lead = api.leadParams(song);
   assert.equal(lead.content_name, "Spotify tap");
-  assert.deepEqual(lead.content_ids, ["luminescent-dreams", "spotify:6Ye477sEzcJg1T6HR0LpRO"]);
+  assert.deepEqual(lead.content_ids, ["lackadaisical-perfection", "spotify:4GvIUbIvx0LIsZ0d3zg9ky"]);
   assert.equal(lead.page_path, "/spotify/");
   assert.notEqual(lead, song);
   assert.deepEqual(api.leadParams(null), { content_name: "Spotify tap" });
@@ -160,7 +164,7 @@ test("the three landing pages keep their store URLs and send parameters", () => 
         href: link.href,
         pageUrl: "https://lackadaisicalperfection.com" + pagePath + "?utm_content=audience-test"
       });
-      assert.equal(params.content_ids[0], "luminescent-dreams", link.href);
+      assert.equal(params.content_ids[0], "lackadaisical-perfection", link.href);
       assert.equal(params.page_path, pagePath);
       const store = { SpotifyTap: "spotify", AppleTap: "apple", AmazonTap: "amazon" }[link.tap];
       assert.equal(params.content_category, store, link.href);
@@ -168,12 +172,12 @@ test("the three landing pages keep their store URLs and send parameters", () => 
   }
 });
 
-test("Tapestry links and events stay free of Luminescent ids", () => {
+test("Tapestry and Luminescent stay free of the title single's ids", () => {
   const html = read("tapestry-of-whispers/index.html");
   assert.equal(html.includes("listen-params.js"), false);
-  assert.equal(html.includes("6Ye477sEzcJg1T6HR0LpRO"), false);
-  assert.equal(html.includes("6818323896"), false);
-  assert.equal(html.includes("B0HLRPB1WJ"), false);
+  assert.equal(html.includes("4GvIUbIvx0LIsZ0d3zg9ky"), false);
+  assert.equal(html.includes("6820767051"), false);
+  assert.equal(html.includes("B0HMFT7TCJ"), false);
   const listen = anchors(html).find((link) => link.href.includes("open.spotify.com/track/"));
   assert.equal(listen.href, "https://open.spotify.com/track/5EEBYde0Cn459esR9Kohjn");
   assert.equal(api.listenParams({ href: listen.href, pageUrl: "https://lackadaisicalperfection.com/tapestry-of-whispers/?utm_content=audience-test" }), null);
@@ -182,9 +186,18 @@ test("Tapestry links and events stay free of Luminescent ids", () => {
   assert.equal(nav.includes('content_name: "Spotify tap"'), true);
   assert.equal(nav.includes('else window.fbq("trackCustom", "SpotifyTap")'), true);
   assert.equal(nav.includes("pageAlreadySendsSpotifyTap"), true);
+  assert.equal(nav.includes("4GvIUbIvx0LIsZ0d3zg9ky"), false);
   assert.equal(nav.includes("6Ye477sEzcJg1T6HR0LpRO"), false);
 
   for (const rel of ["index.html", "scores/luminescent-dreams/index.html", "scores/tapestry-of-whispers/index.html"]) {
     assert.equal(read(rel).includes("listen-params.js"), false, rel);
+  }
+
+  for (const rel of ["scores/luminescent-dreams/index.html", "scores/luminescent-dreams-chords/index.html"]) {
+    const page = read(rel);
+    assert.equal(page.includes('href="/spotify/"'), false, rel);
+    assert.equal(page.includes("6Ye477sEzcJg1T6HR0LpRO"), true, rel);
+    assert.equal(page.includes("4GvIUbIvx0LIsZ0d3zg9ky"), false, rel);
+    assert.equal(page.includes("B0HLRPB1WJ"), true, rel);
   }
 });
